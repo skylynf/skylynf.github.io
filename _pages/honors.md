@@ -10,3 +10,41 @@ author_profile: true
 {% endif %}
 
 {% include base_path %}
+
+
+## National Olympiad in Informatics
+
+- **National Olympiad in Informatics in Provinces (Senior/Junior)** – First Prize (thrice) | 2018 etc.
+
+## Collegiate Programming Contest
+- **SUSTech Collegiate Programming Contest** – Second Prize | 2022
+
+## International Genetically Engineered Machine Competition (iGEM)
+
+- **Silver Medal** (Contribution: Visualization, Wiki Coding, Conceptualization) | 2023
+
+## China International Collegiate “Internet+” Innovation and Entrepreneurship Competition
+
+- **Intramural Competition** – First Prize (First Place) | 2023
+
+## Scholarship
+
+- **University Motto Scholarship (Dean's Scholarship)** (1%) | 2023
+- **National Scholarship Nomination** (2%) | 2023
+- **The Third Prize Scholarship of University** (15%, twice) | 2021/2022
+
+## Student Honors
+
+- **Outstanding Youth in Guangdong Province** (unique in the University) | 2023
+- **Excellent Student of SUSTech** | 2021
+- **Outstanding Volunteer of SUSTech** | 2021
+- **Ethic Award of SUSTech** | 2022
+
+## Sports and Hobbies
+
+- **National Level - China ARDF (Radio Orienteering) Youth Championship** – First Place (Champion)
+- **Municipal Level - Shenzhen Volleyball Championship (University Cup)** – First Place (Champion)
+- **Zhicheng College Group Badminton League** – First Place (Champion)
+
+---
+
