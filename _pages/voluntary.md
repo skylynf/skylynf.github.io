@@ -7,8 +7,6 @@ author_profile: true
 
 {% include base_path %}
 
-# Volunteer Experience
-
 ## Total Volunteer Service Hours (2020 till now)
 # 499.25 h 
 
