@@ -9,9 +9,9 @@ author_profile: true
 
 ## Total Volunteer Service Hours (2020 till now)
 # 499.25 h 
+Engaged in diverse volunteer activities, including sports events, academic conferences, competitions, and caring for vulnerable groups.
 
-- Engaged in diverse volunteer activities, including sports events, academic conferences, competitions, and caring for vulnerable groups.
-
+---
 
 ## **"Glimmer in SUSTech": First Aid Knowledge Outreach Project (project leader):**
 ### 2021 till now
@@ -24,6 +24,7 @@ Beyond the university borders, we extended our outreach to six local communities
 
 In this role, I not only assumed the responsibility of a primary instructor but also actively engaged in community partnerships, fostering a culture of preparedness and support. The success of the project highlights our dedication to promoting health and safety both within and beyond the university campus.
 
+---
 
 ## Campus Volunteer First Aid Responder 
 ### 2020 till now
@@ -46,5 +47,9 @@ As a "First Responder" volunteer, I actively participated in various training pr
 
 At the same time, I applied my personal expertise to the popularization of first aid. I used my computer programming knowledge to design a first responder system that can visually view the nearest AED on campus in real time. At the same time, I can ask for help with one click and contact the nearest first responder to implement rescue.
 
+---
 
+## Others
+
+Primary school teacher volunteers, volunteer teaching volunteers, volunteers at large academic conferences, volunteers caring for sanitation workers, etc.
 
