@@ -32,7 +32,8 @@ author_profile: true
 
 
 ![Me with groupmate](/images/i2ai.jpg "Me with groupmate")
-Group photo with image segmentation
+
+Group photo
 
 Feel free to explore my GitHub profile for more projects and contributions.
 
