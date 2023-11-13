@@ -17,6 +17,8 @@ author_profile: true
 
 ![Group Photo](/images/redcross.jpg)
 
+Me in the middle
+
 ### Involvement
 
 Actively participated in organizing Red Cross brand activities, promoting the Rescues and Donations initiative. With a conscientious and responsible approach, successfully organized various events, including:
@@ -46,6 +48,7 @@ Since its inception, the project has benefited over 13,000 individuals, includin
 I have taken the initiative to organize a wide range of class activities, fostering a sense of community and engagement among my peers. These activities include sports events, cultural performances, evening galas, small-scale games, and afternoon tea gatherings. By curating a diverse set of events, I aimed to create an inclusive and vibrant class environment.
 
 ![Group Photo](/images/class.gif)
+
 Class Games
 
 ### Annual Scholarship Evaluation Committee Member
@@ -57,6 +60,7 @@ Consistently, each year, I actively participate as a member of the scholarship e
 My contributions extend to various aspects of class organization and operations. Whether it's coordinating events, facilitating communication, or addressing the needs of classmates, I actively contribute to the overall well-being of the class. Through collaborative efforts, I aim to enhance the cohesiveness and effectiveness of class dynamics.
 
 ![Group Photo](/images/zhicheng.jpg)
+
 Zhicheng College birthday party, me beside cake
 
 Feel free to reach out for more details or specific examples of my contributions to class activities and organization.
