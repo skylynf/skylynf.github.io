@@ -30,6 +30,10 @@ author_profile: true
 - Chess Game Application
 - Chat Room Application
 
+
+![Me with groupmate](/images/i2ai.gif "Me with groupmate")
+Group photo with image segmentation
+
 Feel free to explore my GitHub profile for more projects and contributions.
 
 
