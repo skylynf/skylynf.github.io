@@ -9,13 +9,15 @@ redirect_from:
 ---
 
 ## Introduction
-An interesting guy who majored in computer science. The undergraduate research direction is Evolutionary Computation and GPU-accelerating Algorithm. 
+An interesting guy who majored in computer science. The undergraduate research direction is Evolutionary Computation and GPU-accelerating Algorithm. Undergraduate researcher in Evolutionary Machine Intelligence lab, advised by Prof. Ran Cheng.
 As a passionate person, sunny and cheerful, committed to helping others, has done a lot of volunteer services, and has strong leadership skills.
 Devote wholeheartedly to field of interest, have good enthusiasm and passion.
 
 GPA was relatively low, but did a good job in the course projects and received full marks for many professional courses.
 Not be keen on GPA calculation, and carefully complete the assignments independently without assist of internet, so often don't get high homework points.
 Competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
+
+![Me at Library](/image/me_at_lib.png "Me at Library")
 
 ## Background
 
