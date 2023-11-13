@@ -41,11 +41,13 @@ author_profile: true
 
 - Participated in developing the distributed scalable evolutionary computation intelligent acceleration library EvoX.
 - Responsible for developing evolutionary algorithms meeting functional programming standards using the JAX library developed by Google.
-- GitHub Repo: [EvoX Library](link_to_repo)
-
 
 ![Group Meeting](/images/meeting.jpg "Meeting")
 Group Meeting
+
+### Project: JAX-based Evolutionary Computation Library EvoX
+
+<embed src="/files/EvoX_Final_Report.pdf" width="500" height="375" type="application/pdf">
 
 ---
 
