@@ -86,6 +86,8 @@ In the role of coach and libero for the ZhiCheng College Volleyball team, I play
 
 Feel free to reach out for more details or specific examples of my involvement in volleyball activities and leadership roles.
 
+![Group Photo](/images/volleyball.jpg)
+
 ---
 
 ## Others
