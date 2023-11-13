@@ -7,8 +7,6 @@ author_profile: true
 
 {% include base_path %}
 
-# Projects
-
 ## Traffic Sign Detection with YOLOv8 | Advisor: Prof. Jianguo Zhang | May 2023
 
 - Implemented YOLOv8 on Edge Device Jetson Nano for traffic sign recognition.
