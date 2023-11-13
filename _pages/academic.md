@@ -14,7 +14,7 @@ author_profile: true
 
 
 ## TensorACO: GPU-Accelerated Tensorized Ant Colony Optimization Algorithm
-### Advisor: Prof. Ran Cheng | Sept. 2023 till now
+### Advisor: [Prof. Ran Cheng](https://chengran.tech/) | Sept. 2023 till now
 
 - Implemented an algorithm adhering to functional programming and Google's JAX standards.
 - Orchestrated the entire algorithm process to be tensorized and deterministic.
@@ -34,12 +34,12 @@ author_profile: true
 
 ---
 
-## Evolving Machine Intelligence Lab of SUSTech 
-### Advisor: Prof. Ran Cheng | Jun. 2021 till now
+## [Evolving Machine Intelligence Lab](https://www.emigroup.tech/) of SUSTech 
+### Advisor: [Prof. Ran Cheng](https://chengran.tech/) | Jun. 2021 till now
 
 ### Research Assistant
 
-- Participated in developing the distributed scalable evolutionary computation intelligent acceleration library EvoX.
+- Participated in developing the distributed scalable evolutionary computation intelligent acceleration library [EvoX](https://github.com/EMI-Group/evox).
 - Responsible for developing evolutionary algorithms meeting functional programming standards using the JAX library developed by Google.
 
 ![Group Meeting](/images/meeting.jpg "Meeting")
@@ -58,7 +58,7 @@ Group Meeting
 
 - Collected and processed data from BiliBili and WeChat.
 - Generated visual representations to present insights, aiding in decision-making and project planning.
-- Due to data confidentiality, a similar project can be referred to in the GitHub Repo: [AnalyzeSOF](link_to_repo).
+- Due to data confidentiality, a similar project can be referred to in the GitHub Repo: [AnalyzeSOF](https://github.com/skylynf/AnalyzeSOF).
 
 
 ---
