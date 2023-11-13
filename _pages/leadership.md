@@ -56,16 +56,17 @@ Feel free to reach out for more details or specific examples of my contributions
 
 ## Vice president of School Volleyball Club
 > ### 2022 till now
-#### University Volleyball Team
+
+### University Volleyball Team
 As a member of the SUSTech University Volleyball Team, I actively participated in the Guangdong Provincial University Volleyball League in both 2020 and 2021. Additionally, I competed in the 2021 Shenzhen University City Cup Volleyball Championship, where our team achieved the runner-up position.
 
-#### Volleyball Club
+### Volleyball Club
 
 Beyond athlete training, I dedicated time to delve into refereeing knowledge. Through my personal efforts and financial investment, I obtained the titles of National Level 2 Referee in both regular and air volleyball. Following this qualification, I took on roles as the leader of the Referee Department in the SUSTech Volleyball Club, after that, I became vice president of SUSTech Volleyball Club. I played a key role in organizing and officiating various events, contributing to the introduction of the international scoring system at SUSTech. I actively shared refereeing knowledge with fellow volleyball enthusiasts, keeping them informed about rule changes and advancements in the field. I officiated in three university-level volleyball events and one city-level tournament, totaling dozens of matches. I also participated in referee training for the Guangdong Provincial University Games.
 
 Moreover, I organized and participated in the SUSTech Volleyball Club's booth during the annual university-wide event, promoting volleyball knowledge and raising awareness about the sport.
 
-#### ZhiCheng College Volleyball team(2021)
+### ZhiCheng College Volleyball team(2021)
 
 In the role of coach and libero for the ZhiCheng College Volleyball team, I played a vital role in fostering the development of volleyball within the college. Actively involved in recruitment, training, and team management, I led the team to an impressive achievement in the 2021 "Welcome Cup" Volleyball Tournament, securing the undergraduate runner-up position. This accomplishment marked a historic breakthrough, breaking the tradition of the team not securing any rankings in volleyball events for several years.
 
