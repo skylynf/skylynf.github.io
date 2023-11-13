@@ -23,30 +23,30 @@ Competed with many people whose GPAs were greater than 3.8 and won the universit
 *Southern University of Science and Technology, Shenzhen, Guangdong*  
 *Sept. 2020 - Present*
 
-- Overall GPA: 3.4/4.0 (3.68 in Junior Semester)
-- Weighted Avg. Score: 84.21/100
-
-**Main Courses:**
-- *Deep Learning*\*
-- *Artificial Intelligence*\*
-- *Software Engineering*\*
-- *Operating System*
-- *Computer Security*
-- *Computer Networks*
-- *Data Mining*\*
-- *Discrete Mathematics*
-- *Probability and Statistics*
-- *Com. Sys. Design and Application*\*
-- *Algorithm Design and Analysis*\*
-
-*Courses marked with \* represent that received full marks in course project.*
-
-
-**Organizing Experience**
-
-- President of SUSTech Red Cross (Student)
-- Leader of SUSTech Emergency Rescue Association
-- Vice President of the School Volleyball Club
+> Overall GPA: 3.4/4.0 (3.68 in Junior Semester)
+> 
+> Weighted Avg. Score: 84.21/100
+>   
+> **Main Courses:**
+> - *Deep Learning*\*
+> - *Artificial Intelligence*\*
+> - *Software Engineering*\*
+> - *Operating System*
+> - *Computer Security*
+> - *Computer Networks*
+> - *Data Mining*\*
+> - *Discrete Mathematics*
+> - *Probability and Statistics*
+> - *Com. Sys. Design and Application*\*
+> - *Algorithm Design and Analysis*\*
+>   
+> *Courses marked with \* represent that received full marks in course project.*
+> 
+> **Organizing Experience**
+>
+> - President of SUSTech Red Cross (Student)
+> - Leader of SUSTech Emergency Rescue Association
+> - Vice President of the School Volleyball Club
 
 ## Exchange Program
 
