@@ -18,9 +18,15 @@ Not be keen on GPA calculation, and carefully complete the assignments independe
 Competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
 
 ![Me at Library](/images/me_at_lib.png "Me at Library")
+
 Me at Library, @SUSTech Wechat Channel
 
+![Me at talk](/images/talk.jpg "Me at talk")
+
+Me giving talk
+
 ![Me at Conference](/images/me_at_conf.jpg "Me at Conference")
+
 Me at Conference
 
 
