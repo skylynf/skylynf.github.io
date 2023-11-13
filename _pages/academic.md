@@ -40,6 +40,10 @@ author_profile: true
 - Responsible for developing evolutionary algorithms meeting functional programming standards using the JAX library developed by Google.
 - GitHub Repo: [EvoX Library](link_to_repo)
 
+
+![Group Meeting](/images/meeting.jpg "Meeting")
+Group Meeting
+
 ---
 
 ## Guangdong Youth Big Data and New Media Center 
