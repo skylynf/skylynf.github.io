@@ -29,6 +29,9 @@ author_profile: true
 - Introduced a unique crossover operator and shuffle process to optimize solutions, with a focus on reducing local optima.
 - Conducted algorithm analysis and experiments on distinct datasets.
 
+<embed src="/files/CARP_Project_Report.pdf" width="500" height="375" type="application/pdf">
+
+
 ---
 
 ## Evolving Machine Intelligence Lab of SUSTech 
