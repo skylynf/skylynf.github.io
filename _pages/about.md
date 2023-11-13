@@ -14,7 +14,7 @@ As a passionate person, sunny and cheerful, committed to helping others, has don
 Devote wholeheartedly to field of interest, have good enthusiasm and passion.
 
 GPA was relatively low, but did a good job in the course projects and received full marks for many professional courses.
-Be not keen on GPA calculation, and carefully complete all the homework after class independently without assist of internet, so often don't get high homework points.
+Not be keen on GPA calculation, and carefully complete the assignments independently without assist of internet, so often don't get high homework points.
 Competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
 
 ## Background
