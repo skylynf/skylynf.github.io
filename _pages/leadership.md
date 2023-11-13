@@ -82,7 +82,7 @@ Moreover, I organized and participated in the SUSTech Volleyball Club's booth du
 
 ### ZhiCheng College Volleyball team(2021)
 
-In the role of coach and libero for the ZhiCheng College Volleyball team, I played a vital role in fostering the development of volleyball within the college. Actively involved in recruitment, training, and team management, I led the team to an impressive achievement in the 2021 "Welcome Cup" Volleyball Tournament, securing the undergraduate runner-up position. This accomplishment marked a historic breakthrough, breaking the tradition of the team not securing any rankings in volleyball events for several years.
+In the role of coach and libero for the ZhiCheng College Volleyball team, I played a vital role in fostering the development of volleyball within the college. Actively involved in recruitment, training, and team management, I led the team to an impressive achievement in the 2021 "College Cup" Volleyball Tournament, securing the undergraduate runner-up position. This accomplishment marked a historic breakthrough, breaking the tradition of the team not securing any rankings in volleyball events for several years.
 
 Feel free to reach out for more details or specific examples of my involvement in volleyball activities and leadership roles.
 
