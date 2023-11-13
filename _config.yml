@@ -7,9 +7,9 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Luming Yang"
+title                    : "SkyLYnf"
 title_separator          : "-"
-name                     : &name "SkyLYnf"
+name                     : &name "Luming Yang"
 description              : &description "Kind person."
 url                      : https://skylynf.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
