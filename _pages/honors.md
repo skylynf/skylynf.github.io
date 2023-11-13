@@ -11,27 +11,26 @@ author_profile: true
 
 {% include base_path %}
 
+## International Genetically Engineered Machine Competition (iGEM)
 
+- **Silver Medal** | 2023
+  
 ## National Olympiad in Informatics
 
 - **National Olympiad in Informatics in Provinces (Senior/Junior)** – First Prize (thrice) | 2018 etc.
-
-## Collegiate Programming Contest
-- **SUSTech Collegiate Programming Contest** – Second Prize | 2022
-
-## International Genetically Engineered Machine Competition (iGEM)
-
-- **Silver Medal** (Contribution: Visualization, Wiki Coding, Conceptualization) | 2023
-
-## China International Collegiate “Internet+” Innovation and Entrepreneurship Competition
-
-- **Intramural Competition** – First Prize (First Place) | 2023
 
 ## Scholarship
 
 - **University Motto Scholarship (Dean's Scholarship)** (1%) | 2023
 - **National Scholarship Nomination** (2%) | 2023
 - **The Third Prize Scholarship of University** (15%, twice) | 2021/2022
+
+## Collegiate Programming Contest
+- **SUSTech Collegiate Programming Contest** – Second Prize | 2022
+
+## China International Collegiate “Internet+” Innovation and Entrepreneurship Competition
+
+- **Intramural Competition** – First Prize (First Place) | 2023
 
 ## Student Honors
 
