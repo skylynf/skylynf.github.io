@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Academic"
+title: "Academic Experience"
 permalink: /academic/
 author_profile: true
 ---
@@ -12,8 +12,6 @@ author_profile: true
 {% include base_path %}
 
 
-
-# Academic Experience
 
 ## TensorACO: GPU-Accelerated Tensorized Ant Colony Optimization Algorithm
 ### Advisor: Prof. Ran Cheng | Sept. 2023 till now
@@ -30,22 +28,22 @@ author_profile: true
 - Developed an algorithm for the Capacitated Arc Routing Problem.
 - Introduced a unique crossover operator and shuffle process to optimize solutions, with a focus on reducing local optima.
 - Conducted algorithm analysis and experiments on distinct datasets.
-- Published an article titled "Heuristic Genetic Algorithm for Capacitated Arc Routing Problem."
 
 ---
 
-## Evolving Machine Intelligence Lab of SUSTech | Jun. 2021 – Present
+## Evolving Machine Intelligence Lab of SUSTech 
+### Advisor: Prof. Ran Cheng | Jun. 2021 till now
 
 ### Research Assistant
 
 - Participated in developing the distributed scalable evolutionary computation intelligent acceleration library EvoX.
 - Responsible for developing evolutionary algorithms meeting functional programming standards using the JAX library developed by Google.
 - GitHub Repo: [EvoX Library](link_to_repo)
-- Published a report: "EvoX Group Research Report."
 
 ---
 
-## Guangdong Youth Big Data and New Media Center | Aug. 2020 – Sept. 2020
+## Guangdong Youth Big Data and New Media Center 
+### Aug. 2020 – Sept. 2020
 
 ### Internship - Information Retrieval and Data Analysis
 
