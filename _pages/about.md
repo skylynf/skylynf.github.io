@@ -17,7 +17,8 @@ GPA was relatively low, but did a good job in the course projects and received f
 Not be keen on GPA calculation, and carefully complete the assignments independently without assist of internet, so often don't get high homework points.
 Competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
 
-![Me at Library](/image/me_at_lib.png "Me at Library")
+![Me at Library](/images/me_at_lib.png "Me at Library")
+![Me at Conference](/images/me_at_conf.jpg "Me at Conference")
 
 ## Background
 
@@ -63,6 +64,9 @@ Competed with many people whose GPAs were greater than 3.8 and won the universit
 **Guangzhou No.2 Middle and High School**  
 *Sept. 2014 - Jun. 2020*
 - Leader of the Student Information and Science Technology Department
+
+
+![Dinner with Principal of RDF International School](/images/with_RDF.jpg "Dinner with Principal of RDF International School")
 
 
 
