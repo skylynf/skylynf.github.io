@@ -7,12 +7,13 @@ author_profile: true
 
 {% include base_path %}
 
+---
 
 ## Student President of SUSTech Red Cross	(Founder)
-### 2022 till now
--	Founded the SUSTech Red Cross (Student), gained recognition as one of the five campus-level student organizations. Achieved the distinction of "Red Cross Standard School" in Guangdong province.
--	Organized a variety of volunteer events, campus charity markets, and fundraising initiatives.
--	Conducted first aid course including CPR for students and staff, with over 2,000 trained.
+> ### 2022 till now
+> -	Founded the SUSTech Red Cross (Student), gained recognition as one of the five campus-level student organizations. Achieved the distinction of "Red Cross Standard School" in Guangdong province.
+> -	Organized a variety of volunteer events, campus charity markets, and fundraising initiatives.
+> -	Conducted first aid course including CPR for students and staff, with over 2,000 trained.
 
 ### Involvement
 
@@ -31,10 +32,10 @@ The project targets both students and citizens of Shenzhen, aiming to disseminat
 The goal is to effectively increase the popularity of first aid knowledge, reducing casualties and losses resulting from improper or delayed handling of accidents. 
 Since its inception, the project has benefited over 13,000 individuals, including students and community residents.
 
+---
 
 ## Monitor of Class 2014
-### 2020 till now
-# Class Leadership and Contributions
+> ### 2020 till now
 
 ### Diverse Class Activities
 
@@ -51,11 +52,27 @@ My contributions extend to various aspects of class organization and operations.
 Feel free to reach out for more details or specific examples of my contributions to class activities and organization.
 
 
-
+---
 
 ## Vice president of School Volleyball Club
-### 2022 till now
+> ### 2022 till now
+#### University Volleyball Team
+As a member of the SUSTech University Volleyball Team, I actively participated in the Guangdong Provincial University Volleyball League in both 2020 and 2021. Additionally, I competed in the 2021 Shenzhen University City Cup Volleyball Championship, where our team achieved the runner-up position.
 
+#### Volleyball Club
 
-## Leader of SUSTech Emergency Rescue Association
-### 2021-2022
+Beyond athlete training, I dedicated time to delve into refereeing knowledge. Through my personal efforts and financial investment, I obtained the titles of National Level 2 Referee in both regular and air volleyball. Following this qualification, I took on roles as the leader of the Referee Department in the SUSTech Volleyball Club, after that, I became vice president of SUSTech Volleyball Club. I played a key role in organizing and officiating various events, contributing to the introduction of the international scoring system at SUSTech. I actively shared refereeing knowledge with fellow volleyball enthusiasts, keeping them informed about rule changes and advancements in the field. I officiated in three university-level volleyball events and one city-level tournament, totaling dozens of matches. I also participated in referee training for the Guangdong Provincial University Games.
+
+Moreover, I organized and participated in the SUSTech Volleyball Club's booth during the annual university-wide event, promoting volleyball knowledge and raising awareness about the sport.
+
+#### ZhiCheng College Volleyball team(2021)
+
+In the role of coach and libero for the ZhiCheng College Volleyball team, I played a vital role in fostering the development of volleyball within the college. Actively involved in recruitment, training, and team management, I led the team to an impressive achievement in the 2021 "Welcome Cup" Volleyball Tournament, securing the undergraduate runner-up position. This accomplishment marked a historic breakthrough, breaking the tradition of the team not securing any rankings in volleyball events for several years.
+
+Feel free to reach out for more details or specific examples of my involvement in volleyball activities and leadership roles.
+
+---
+
+## Others
+### Leader of SUSTech Emergency Rescue Association
+#### 2021-2022
