@@ -187,11 +187,24 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
+  academic:
+    output: true
+    permalink: /:collection/:path/
 
 
 # Defaults
 defaults:
   # _posts
+  - scope:
+      path: ""
+      type: academic
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
   - scope:
       path: ""
       type: posts
