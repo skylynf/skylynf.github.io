@@ -15,6 +15,8 @@ author_profile: true
 > -	Organized a variety of volunteer events, campus charity markets, and fundraising initiatives.
 > -	Conducted first aid course including CPR for students and staff, with over 2,000 trained.
 
+![Group Photo](/images/redcross.jpg =800x)
+
 ### Involvement
 
 Actively participated in organizing Red Cross brand activities, promoting the Rescues and Donations initiative. With a conscientious and responsible approach, successfully organized various events, including:
@@ -24,6 +26,8 @@ Actively participated in organizing Red Cross brand activities, promoting the Re
 - **"Lighting SUSTech, Youth in Action" Emergency Rescue Drill:** A practical exercise to enhance emergency response skills.
 - **"Technology-Driven, Wisdom in Disaster Prevention" Disaster Prevention Knowledge Conference:** An educational session to disseminate disaster prevention knowledge.
 - **"Scientific Disaster Reduction, Safeguarding Development" 5·12 Disaster Reduction Day Theme Campaign:** A thematic campaign promoting disaster reduction awareness.
+
+![Group Photo](/images/Leadership.jpg =800x)
 
 Throughout his tenure, SUSTech was recognized as a Red Cross Standard School in Guangdong province.
 
