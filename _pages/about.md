@@ -18,7 +18,11 @@ Not be keen on GPA calculation, and carefully complete the assignments independe
 Competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
 
 ![Me at Library](/images/me_at_lib.png "Me at Library")
+Me at Library, @SUSTech Wechat Channel
+
 ![Me at Conference](/images/me_at_conf.jpg "Me at Conference")
+Me at Conference
+
 
 ## Background
 
@@ -67,6 +71,7 @@ Competed with many people whose GPAs were greater than 3.8 and won the universit
 
 
 ![Dinner with Principal of RDF International School](/images/with_RDF.jpg "Dinner with Principal of RDF International School")
+Dinner with Principal of RDF International School
 
 
 
