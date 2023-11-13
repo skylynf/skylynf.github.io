@@ -34,16 +34,22 @@ author_profile: true
 
 ## Student Honors
 
-- **Outstanding Youth in Guangdong Province** (unique in the University) | 2023
+- **Outstanding Youth in Guangdong Province** (unique in the Univ.) | 2023
 - **Excellent Student of SUSTech** | 2021
-- **Outstanding Volunteer of SUSTech** | 2021
 - **Ethic Award of SUSTech** | 2022
+- **Outstanding Youth in Guangzhou** | 2018
+
+## Voluntary Work
+- **Distinguish Member of Guangdong Province Red Cross** (25 in the Province) | 2023
+- **Outstanding Volunteer of SUSTech** | 2021
+- **Emergency Rescue Model of SUSTech** | 2021/2022
 
 ## Sports and Hobbies
 
 - **National Level - China ARDF (Radio Orienteering) Youth Championship** – First Place (Champion)
 - **Municipal Level - Shenzhen Volleyball Championship (University Cup)** – First Place (Champion)
 - **Zhicheng College Group Badminton League** – First Place (Champion)
+
 
 ---
 
