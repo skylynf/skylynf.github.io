@@ -33,9 +33,17 @@ In this role, I not only assumed the responsibility of a primary instructor but 
 - Effectively managed diverse situations, including suspected cases of epilepsy, fractures, trauma, heatstroke, hyperventilation, and snake bites.
 - Honored with 'SUSTech Emergency Rescue Model' for outstanding contributions, twice.
 
+![Group Photo](/images/FR.jpg)
+
+First responder case
+
 In September 2020, I joined the Southern University of Science and Technology Emergency Rescue Association (SERA). In October of the same year, I obtained certification as a Red Cross first aid responder. Joining the "First Responder" volunteer team, I promptly engaged in handling emergencies and providing pre-hospital first aid.
 
 Over the past three years, I have responded to nearly a hundred emergencies, successfully managing various situations, including several suspected cases of epilepsy, fractures, external injuries, heatstroke, and hyperventilation. The average response time was less than three minutes, earning me recognition as a reliable and professional first responder. Teachers at the university have commended me as being "professional and dependable."
+
+![Group Photo](/images/help.gif)
+
+First aid to an epileptic patient
 
 Outside the campus, I volunteered on three occasions to assist passengers in need on high-speed trains and subways.
 
