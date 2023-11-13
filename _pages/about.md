@@ -44,9 +44,9 @@ Competed with many people whose GPAs were greater than 3.8 and won the universit
 
 **Organizing Experience**
 
-- **President of SUSTech Red Cross (Student)**
-- **Leader of SUSTech Emergency Rescue Association**
-- **Vice President of the School Volleyball Club**
+- President of SUSTech Red Cross (Student)
+- Leader of SUSTech Emergency Rescue Association
+- Vice President of the School Volleyball Club
 
 ## Exchange Program
 
