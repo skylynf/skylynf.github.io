@@ -11,6 +11,10 @@ author_profile: true
 # 499.25 h 
 Engaged in diverse volunteer activities, including sports events, academic conferences, competitions, and caring for vulnerable groups.
 
+![Group Photo](/images/volunteer.jpg)
+
+Speech on stage as a volunteer representative of Shenzhen
+
 ---
 
 ## **"Glimmer in SUSTech": First Aid Knowledge Outreach Project (project leader):**
@@ -19,6 +23,9 @@ Engaged in diverse volunteer activities, including sports events, academic confe
 As the project leader of the "Glimmer in SUSTech" First Aid Knowledge Outreach Project, I led a dedicated team in providing comprehensive first aid training to both university students and residents in the surrounding communities. The training encompassed essential skills such as AED operation, CPR, wound dressing, and other first aid knowledge.
 
 Within the campus of Southern University of Science and Technology (SUSTech), we conducted over 30 sessions, reaching a total of more than 3,200 individuals. Our training sessions covered the entire freshman population over three years, earning widespread acclaim. Additionally, we recruited over 600 students, empowering them to serve as the first responders for medical emergencies on campus.
+
+
+![Group Photo](/images/light.jpg)
 
 Beyond the university borders, we extended our outreach to six local communities, including BaoShiZhou East Community and LongGuang Community in Shenzhen. Here, we provided vital first aid knowledge training to approximately 220 residents. Our commitment to delivering thorough and responsible training garnered encouragement and praise from the community members.
 
@@ -33,9 +40,7 @@ In this role, I not only assumed the responsibility of a primary instructor but 
 - Effectively managed diverse situations, including suspected cases of epilepsy, fractures, trauma, heatstroke, hyperventilation, and snake bites.
 - Honored with 'SUSTech Emergency Rescue Model' for outstanding contributions, twice.
 
-![Group Photo](/images/FR.jpg)
-
-First responder case
+![Group Photo](/images/sera.jpg)
 
 In September 2020, I joined the Southern University of Science and Technology Emergency Rescue Association (SERA). In October of the same year, I obtained certification as a Red Cross first aid responder. Joining the "First Responder" volunteer team, I promptly engaged in handling emergencies and providing pre-hospital first aid.
 
@@ -48,6 +53,10 @@ First aid to an epileptic patient
 Outside the campus, I volunteered on three occasions to assist passengers in need on high-speed trains and subways.
 
 On campus, I actively organized and participated in various safety assurance volunteer services, including safety coverage for numerous sports events. Additionally, I played a crucial role in the safety assurance for three years of undergraduate military training, successfully handling emergencies such as snake bites, heat syncope, and acute hypokalemia. These efforts resulted in multiple commendations as a "Model in Emergency Rescue" from the university.
+
+![Group Photo](/images/FR.jpg)
+
+First responder case
 
 In maintaining campus first aid facilities, I volunteered to inspect and maintain AED devices regularly. This involved inspecting hundreds of AEDs on campus, conducting more than 10 self-checks on AED devices, and identifying and resolving issues with four AED devices.
 
