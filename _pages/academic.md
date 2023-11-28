@@ -22,7 +22,7 @@ author_profile: true
 
 ### Detail:
 
-TensorACO is notable for its elegance, simplicity, and scalability. With tensorization, the method optimized acceleration 89 times compared to serialization methods with no loss of solution quality. New exploration of the i-roulette method of choosing movement has produced substantial findings, achieved an extra acceleration of 2.12x.
+TensorACO is notable for its elegance, simplicity, and scalability. With tensorization, the method optimized acceleration **89** times compared to serialization methods with no loss of solution quality. New exploration of the i-roulette method of choosing movement has produced substantial findings, achieved an extra acceleration of** 2.12x**.
 
 Preparing for upcoming submission to the Genetic and Evolutionary Computation Conference 2024.
 
