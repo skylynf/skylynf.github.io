@@ -16,7 +16,7 @@ Devote wholeheartedly to field of interest, have good enthusiasm and passion.
 GPA was relatively low, but did a good job in the course projects and received full marks for many professional courses.
 Not be keen on GPA calculation. Competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
 
-Click here to see [Statement on GPA](https://github.com/skylynf/skylynf.github.io/blob/master/files/Statement%20on%20GPA.pdf)
+Click here to see [Statement on GPA](https://skylynf.github.io/files/Statement%20on%20GPA.pdf)
 
 ![Me at Library](/images/me_at_lib.png "Me at Library")
 
