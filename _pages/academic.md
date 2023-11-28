@@ -20,6 +20,10 @@ author_profile: true
 - Orchestrated the entire algorithm process to be tensorized and deterministic.
 - Offered a more versatile GPU-Accelerated solution compared to traditional parallel ACOs.
 
+Detail:
+TensorACO: notable for its elegance, simplicity, and scalability. With tensorization, optimizing 89 times compared to serialization methods with no loss of solution quality. New exploration of the i-roulette method of choosing movement has produced substantial findings, achieved an extra acceleration of 2.12x.
+Preparing for upcoming submission to the Genetic and Evolutionary Computation Conference 2024.
+
 ---
 
 ## Capacitated Arc Routing AI Based on Heuristic Genetic Algorithm
