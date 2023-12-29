@@ -30,6 +30,18 @@ Preparing for upcoming submission to the Genetic and Evolutionary Computation Co
 
 ---
 
+## PoseTransformer: Enhancing Action Recognition via RGB-Skeleton Fusion with Transformer
+### Advisor: Dr. Lei Ding | Oct. 2023
+
+- Integrates a unique RGB-skeleton channel fusion model
+- blending the self-attention mechanism with a transformer
+- Outperforms existing models with an accuracy of **0.955** on the KTH dataset and exhibits remarkable **10% improvement** in accuracy when tested on diverse background settings comparing to the original RGB transformer models.
+
+
+<embed src="/files/PoseTransformer.pdf" width="500" height="375" type="application/pdf">
+
+---
+
 ## Capacitated Arc Routing AI Based on Heuristic Genetic Algorithm
 ### Dec. 2022
 
