@@ -36,9 +36,8 @@ Me at Conference
 > 
 > Weighted Avg. Score: 84.21/100
 >
-> Besides GPA, did a good job in courses and received full marks for many professional course projects.
-> Often choose courses in advance, such as choosing professional courses for sophomores during freshman year
-> Competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
+> I often choose courses in advance, such as choosing professional courses for sophomores during freshman year.
+> Besides, I competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
 >
 > Click here to see [Statement on GPA](https://skylynf.github.io/files/Statement%20on%20GPA.pdf)
 >   
