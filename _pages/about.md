@@ -9,14 +9,9 @@ redirect_from:
 ---
 
 ## Introduction
-An interesting guy who majored in computer science. The undergraduate research direction is Evolutionary Computation and GPU-accelerating Algorithm. Undergraduate researcher in Evolutionary Machine Intelligence lab, advised by Prof. Ran Cheng.
+An interesting guy who majored in Computer Science. The undergraduate research direction is Optimization algorithm, Evolutionary Computation and GPU-accelerating Algorithm. Undergraduate researcher in Evolutionary Machine Intelligence lab, advised by Prof. Ran Cheng, Intern-researcher in Smart Dynamics Co., Ltd, supervised by Dr. Lei Ding.
 As a passionate person, sunny and cheerful, committed to helping others, has done a lot of volunteer services, and has strong leadership skills.
 Devote wholeheartedly to field of interest, have good enthusiasm and passion.
-
-GPA was relatively low, but did a good job in the course projects and received full marks for many professional courses.
-Not be keen on GPA calculation. Competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
-
-Click here to see [Statement on GPA](https://skylynf.github.io/files/Statement%20on%20GPA.pdf)
 
 ![Me at Library](/images/me_at_lib.png "Me at Library")
 
@@ -40,6 +35,12 @@ Me at Conference
 > Overall GPA: 3.4/4.0 (3.68 in Junior Semester)
 > 
 > Weighted Avg. Score: 84.21/100
+>
+> Besides GPA, did a good job in courses and received full marks for many professional course projects.
+> Often choose courses in advance, such as choosing professional courses for sophomores during freshman year
+> Competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
+>
+> Click here to see [Statement on GPA](https://skylynf.github.io/files/Statement%20on%20GPA.pdf)
 >   
 > **Main Courses:**
 > - *Deep Learning*\*
