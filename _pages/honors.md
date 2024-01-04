@@ -21,7 +21,7 @@ author_profile: true
 
 ## Scholarship
 
-- **University Motto Scholarship (Dean's Scholarship)** (1%) | 2023
+- **University Motto Scholarship** (1%) | 2023
 > University Motto Scholarship is a distinction that reflects the values encapsulated in our school motto: Seeking virtue and truth, renewing ourselves with each passing day.  The scholarship recognizes 24 undergraduate students as recipients. It is a rare and prestigious honor, bestowed upon the top 1% of students within our university. It serves as a tribute to the most outstanding individuals who exemplify academic excellence and uphold the principles of virtue and self-improvement embedded in our school’s ethos.
 
 - **National Scholarship Nomination** (2%) | 2023
