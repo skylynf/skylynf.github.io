@@ -31,6 +31,7 @@ author_profile: true
 
 ## PoseTransformer: Enhancing Action Recognition via RGB-Skeleton Fusion with Transformer
 ### Advisor: Dr. Lei Ding | Oct. 2023
+(First Author, Under reviewing)
 
 - Integrates a unique RGB-skeleton channel fusion model.
 - Blending the self-attention mechanism with a transformer.
