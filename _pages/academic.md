@@ -13,28 +13,27 @@ author_profile: true
 
 
 
-## TensorACO: GPU-Accelerated Tensorized Ant Colony Optimization Algorithm
+## TensorACO: Tensorized Ant Colony Optimization for GPU Acceleration
 ### Advisor: [Prof. Ran Cheng](https://chengran.tech/) | Sept. 2023 till now
+(First Author, Under reviewing)
 
-- Implemented an algorithm adhering to functional programming and Google's JAX standards.
-- Orchestrated the entire algorithm process to be tensorized and deterministic.
-- Offered a more versatile GPU-Accelerated solution compared to traditional parallel ACOs.
+- We propose an ant system tensorization method. It integrates heuristic method values and the pheromone matrices to compute the probability transition matrix, enabling efficient preprocessing while achieving acceleration using function mapping.
+- We propose an ant path tensorization method. It parallelizes the serial processing of ant path solutions in the pheromone matrix computation and reduces redundant path cost calculations through an index mapping method.
+- We propose an Adaptive Independent Roulette (AdaIR) method. It improves algorithm performance while retaining the benefits of parallelization by incorporating a learning rate hyperparameter to dynamically adjust the tendency of ants to select cities with higher probabilities.
+- Compared with the sequential ACO in CPU, a 1921$\times$ acceleration was achieved; AdaIR achieved an additional acceleration of more than 2$\times$.
 
-### Detail:
 
-TensorACO is notable for its elegance, simplicity, and scalability. With tensorization, the method optimized acceleration **89** times compared to serialization methods with no loss of solution quality. New exploration of the i-roulette method of choosing movement has produced substantial findings, achieved an extra acceleration of **2.12x**.
 
-![TensorACO](/images/TACO.png "TensorACO")
+<embed src="/files/TensorACO2.pdf" width="500" height="375" type="application/pdf">
 
-Preparing for upcoming submission to the Genetic and Evolutionary Computation Conference 2024.
 
 ---
 
 ## PoseTransformer: Enhancing Action Recognition via RGB-Skeleton Fusion with Transformer
 ### Advisor: Dr. Lei Ding | Oct. 2023
 
-- Integrates a unique RGB-skeleton channel fusion model
-- blending the self-attention mechanism with a transformer
+- Integrates a unique RGB-skeleton channel fusion model.
+- Blending the self-attention mechanism with a transformer.
 - Outperforms existing models with an accuracy of **0.955** on the KTH dataset and exhibits remarkable **10% improvement** in accuracy when tested on diverse background settings comparing to the original RGB transformer models.
 
 
