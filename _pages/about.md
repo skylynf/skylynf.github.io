@@ -9,9 +9,8 @@ redirect_from:
 ---
 
 ## Introduction
-An interesting guy who majored in Computer Science. The undergraduate research direction is Optimization algorithm, Evolutionary Computation and GPU-accelerating Algorithm. Undergraduate researcher in Evolutionary Machine Intelligence lab, advised by Prof. Ran Cheng, Intern-researcher in Smart Dynamics Co., Ltd, supervised by Dr. Lei Ding.
-As a passionate person, sunny and cheerful, committed to helping others, has done a lot of volunteer services, and has strong leadership skills.
-Devote wholeheartedly to field of interest, have good enthusiasm and passion.
+I'm now an undergraduate student at Southern University of Science and Technology, majoring in Computer Science. My undergraduate research direction is Optimization algorithms, Computer Vision, and GPU-accelerating Algorithms. I serve as an undergraduate researcher in the Evolutionary Machine Intelligence lab, advised by Prof. Ran Cheng, and an Intern-researcher in Smart Dynamics Co., Ltd, supervised by Dr. Lei Ding.
+As a passionate person, I am sunny and cheerful, committed to helping others, have done a lot of volunteer services, and have strong leadership skills. I devote wholeheartedly to my field of interest, and have good enthusiasm and passion.
 
 ![Me at Library](/images/me_at_lib.png "Me at Library")
 
