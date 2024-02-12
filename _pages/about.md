@@ -10,7 +10,7 @@ redirect_from:
 
 ## Introduction
 I'm now an undergraduate student at Southern University of Science and Technology, majoring in Computer Science. My undergraduate research direction is Optimization algorithms, Computer Vision, and GPU-accelerating Algorithms. I serve as an undergraduate researcher in the Evolutionary Machine Intelligence lab, advised by Prof. Ran Cheng, and an Intern-researcher in Smart Dynamics Co., Ltd, supervised by Dr. Lei Ding.
-As a passionate person, I am sunny and cheerful, committed to helping others, have done a lot of volunteer services, and have strong leadership skills. I devote wholeheartedly to my field of interest, and have good enthusiasm and passion.
+As a passionate person, I am sunny and cheerful, have done many volunteer services, and have strong leadership skills. I devote wholeheartedly to my field of interest, and have good enthusiasm and passion.
 
 ![Me at Library](/images/me_at_lib.png "Me at Library")
 
@@ -36,8 +36,6 @@ Me at Conference
 > Weighted Avg. Score: 84.21/100
 >
 > I often choose courses in advance, such as choosing professional courses for sophomores during freshman year.
-> Besides, I competed with many people whose GPAs were greater than 3.8 and won the university's motto scholarship, very proud of it.
->
 > Click here to see [Statement on GPA](https://skylynf.github.io/files/Statement%20on%20GPA.pdf)
 >   
 > **Main Courses:**
