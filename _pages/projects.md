@@ -9,6 +9,15 @@ author_profile: true
 
 ---
 
+## Momentum in Tennis: A Modeling Study
+
+- This is question C of the 2024 Mathematical Contest in Modeling, which is about analyzing whether there is momentum in tennis.
+- Applied neural networks, swarm intelligence, statistical methods, data science, and visualization.
+
+<embed src="/files/MCM.pdf" width="500" height="375" type="application/pdf">
+
+---
+
 ## EvoX Library for Distributed Evolutionary Computation Acceleration
 
 - [GitHub Repo: EvoX Library](https://github.com/EMI-Group/evox)
