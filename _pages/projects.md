@@ -9,7 +9,7 @@ author_profile: true
 
 ---
 
-## Momentum in Tennis: A Modeling Study
+## Momentum in Tennis: A Modeling Study (2024 MCM)
 
 - This is question C of the 2024 Mathematical Contest in Modeling, which is about analyzing whether there is momentum in tennis.
 - Applied neural networks, swarm intelligence, statistical methods, data science, and visualization.
