@@ -13,6 +13,7 @@ author_profile: true
 
 - This is question C of the 2024 Mathematical Contest in Modeling, which is about analyzing whether there is momentum in tennis.
 - Applied neural networks, swarm intelligence, statistical methods, data science, and visualization.
+- Completed in only three days.
 
 <embed src="/files/MCM.pdf" width="500" height="375" type="application/pdf">
 
