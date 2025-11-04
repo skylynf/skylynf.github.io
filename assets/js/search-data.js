@@ -440,16 +440,17 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
+            },},{id: "news-our-paper-biteeeg-was-accepted-by-bibm-2025",
+          title: 'Our paper BiteEEG was accepted by BIBM 2025.',
           description: "",
           section: "News",},{id: "news-i-am-serving-on-the-program-committee-for-aaai-2026",
           title: 'I am serving on the Program Committee for AAAI 2026.',
+          description: "",
+          section: "News",},{id: "news-our-paper-was-accepted-by-briefings-in-bioinformatics",
+          title: 'Our paper was accepted by Briefings in Bioinformatics.',
+          description: "",
+          section: "News",},{id: "news-our-paper-gaussmedact-was-accepted-by-aaai-2026-sparkles",
+          title: 'Our paper GaussMedAct was accepted by AAAI 2026. :sparkles:',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
