@@ -11,6 +11,7 @@ profile:
   more_info: >
     <p>Bolz Hall 214C</p>
     <p>Columbus OH 43210</p>
+    <p>yang.7670_at_osu.edu</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page

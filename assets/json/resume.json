@@ -4,7 +4,6 @@
     "label": "AI Researcher",
     "image": "",
     "email": "yang.7670@osu.edu",
-    "phone": "+1 6142906696",
     "url": "",
     "summary": "Ph.D. student at The Ohio State University specializing in Interdisciplinary AI, Medical AI, and Computer Vision. Experienced in developing high-performance evolutionary computation frameworks and optimizing real-world physics models with large-scale vision datasets.",
     "location": {
@@ -32,7 +31,7 @@
       "url": "",
       "startDate": "2021-06-01",
       "endDate": "2024-06-01",
-      "summary": "Designed & implemented EvoX: a high-performance evolutionary computation framework using JAX’s automatic differentiation and GPU/TPU acceleration. Developed distributed co-evolution algorithms on large-scale neuroevolution tasks.",
+      "summary": "Participated in design & implementation of EvoX: a high-performance evolutionary computation framework using JAX’s automatic differentiation and GPU/TPU acceleration. Developed distributed co-evolution algorithms on large-scale neuroevolution tasks.",
       "highlights": [
         "EvoX framework gained over 700 stars on GitHub."
       ]
@@ -125,38 +124,6 @@
       "date": "2023-01-01",
       "awarder": "Guangdong Province",
       "summary": ""
-    }
-  ],
-  "certificates": [
-    {
-      "name": "AHA HeartSaver®",
-      "date": "",
-      "issuer": "American Heart Association",
-      "url": ""
-    },
-    {
-      "name": "Red Cross First Aid",
-      "date": "",
-      "issuer": "Red Cross",
-      "url": ""
-    },
-    {
-      "name": "China Red Cross Rescue Mentor",
-      "date": "",
-      "issuer": "China Red Cross",
-      "url": ""
-    },
-    {
-      "name": "Radio Operator License (Level A)",
-      "date": "",
-      "issuer": "National Radio Regulation Authority",
-      "url": ""
-    },
-    {
-      "name": "National Volleyball Referee (Level 2)",
-      "date": "",
-      "issuer": "China Volleyball Association",
-      "url": ""
     }
   ],
   "skills": [
