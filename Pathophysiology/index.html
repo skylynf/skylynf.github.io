@@ -1,0 +1,901 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>病理生理学 CBL：AI 辅助学习研究</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .intro-box {
+            background-color: #eef6fc;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            font-size: 0.95em;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .step {
+            display: none; /* 默认隐藏所有步骤 */
+            animation: fadeIn 0.5s;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #004494;
+        }
+
+        .case-text {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #999;
+            margin: 20px 0;
+            font-family: "Georgia", serif;
+            white-space: pre-wrap;
+            font-size: 1.05em;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+        }
+
+        .case-ref-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .range-wrap {
+            position: relative;
+            margin: 0 auto 3rem;
+        }
+        
+        .range-val {
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+
+        .alert {
+            padding: 15px;
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            margin-bottom: 15px;
+        }
+
+        .alert-warning {
+            background-color: #fff3cd;
+            border-left-color: #ffc107;
+            color: #856404;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+        }
+
+        
+        /* Likert Scale Styles */
+        .likert-container {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .likert-row {
+            display: flex;
+            flex-direction: column;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .likert-statement {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .likert-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .likert-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 12px;
+            flex: 1;
+        }
+
+        .likert-option input { margin-bottom: 5px; }
+
+        .scale-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            background: #f9f9f9;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: none; /* Hidden on mobile by default */
+        }
+
+        /* Responsive adjustments for Likert */
+        @media (min-width: 600px) {
+            .scale-header { display: flex; }
+            .likert-row { flex-direction: row; align-items: center; }
+            .likert-statement { flex: 4; margin-bottom: 0; padding-right: 15px; }
+            .likert-options { flex: 6; }
+            .likert-option span { display: none; } /* Hide text labels under radio on desktop if header exists */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.3f7572448765332f3047.js"></script></head>
+<body>
+
+<div class="container">
+    <!-- Step 0: Intro & Login -->
+    <div id="step-0" class="step active">
+        <h1>病理生理学 CBL 研究</h1>
+        
+        <div class="intro-box">
+            <h3>研究介绍</h3>
+            <p>同学你好：<br>
+            本研究旨在探索<strong>人工智能（AI）生成内容在医学教育中的应用效果</strong>。在接下来的 30 分钟内，您将完成一次基于案例的学习（CBL）。</p>
+            <p><strong>流程说明：</strong></p>
+            <ol>
+                <li>阅读分配给您的临床病理案例分析。</li>
+                <li>对内容的准确性进行初步评估。</li>
+                <li>根据系统指令完成特定的深度学习任务（纠错或总结）。</li>
+                <li>完成知识后测与体验反馈。</li>
+            </ol>
+            <p><em>注意：所有数据仅用于教学研究，请根据真实想法作答。</em></p>
+            <p><b>本测验没有对错区分！根据真实想法认真作答即可获取对应分数。</b></p>
+            <p><b>在测试过程中，请不要使用任何形式的AI辅助作答。</b></p>
+            
+        </div>
+        
+        <div class="form-group">
+            <label>学号 (Student ID):</label>
+            <input type="text" id="studentId" placeholder="请输入学号" oninput="updateTopic()">
+        </div>
+
+        <div class="form-group">
+            <label>分配的主题 (Topic):</label>
+            <select id="topicSelect">
+                <option value="">-- 请选择 --</option>
+                <option value="cardiac">心功能不全 (Cardiac Insufficiency)</option>
+                <option value="respiratory">呼吸功能不全 (Respiratory Insufficiency)</option>
+                <option value="shock">休克 (Shock)</option>
+            </select>
+        </div>
+
+        <button onclick="startExperiment()">开始学习</button>
+    </div>
+
+    <!-- Step 1: Blind Reading & Trust Assessment -->
+    <div id="step-1" class="step">
+        <h2>第一阶段：案例阅读</h2>
+        <div class="alert">
+            请打开<b>对应的CBL案例文档</b>。仔细阅读案例文档，并结合案例文档阅读以下临床病理分析报告。阅读完成后，请回答下方的问题。
+        </div>
+        
+        <div id="caseDisplay" class="case-text">
+            <!-- Text will be injected here -->
+        </div>
+
+        <hr>
+        <h3>感知测试</h3>
+        
+        <div class="form-group">
+            <label>1. 置信度打分：你认为这篇分析报告的医学准确性是多少？(0-100)</label>
+            <input type="range" id="trustScore" min="0" max="100" value="50" oninput="document.getElementById('trustVal').innerText = this.value">
+            <div class="range-val"><span id="trustVal">50</span> 分</div>
+        </div>
+
+        <div class="form-group">
+            <label>2. 图灵测试：你认为这篇文章是由AI生成的，还是由人类教授撰写的？</label>
+            <select id="turingTest">
+                <option value="">-- 请选择 --</option>
+                <option value="definitely_ai">肯定是 AI</option>
+                <option value="probably_ai">可能是 AI</option>
+                <option value="probably_human">可能是人类教授</option>
+                <option value="definitely_human">肯定是人类教授</option>
+            </select>
+        </div>
+
+        <button onclick="submitStep1()">提交并进入下一阶段</button>
+    </div>
+
+    <!-- Step 2: Intervention (Split A/C) -->
+    <div id="step-2" class="step">
+        <h2>第二阶段：深度学习</h2>
+        
+        <div id="intervention-text" class="alert alert-warning">
+            <!-- Dynamic Instruction based on Group -->
+        </div>
+
+        <div class="case-ref-label">▼ 刚才阅读的案例内容（供参考）：</div>
+        <div id="caseDisplayRef" class="case-text" style="font-size: 0.9em; background-color: #f0f0f0;">
+            <!-- Copy of text will be injected here -->
+        </div>
+
+        <div class="form-group">
+            <label id="task-label" style="font-size: 1.1em; color: var(--primary-color);">任务回答：</label>
+            <textarea id="interventionResponse" placeholder="在此输入您的分析..."></textarea>
+        </div>
+
+        <h3>深度认知反思 (Deep Reflection)</h3>
+        <p class="instruction-text">请根据刚才的思维过程，详细回答以下问题。</p>
+
+        <!-- a. 认知失调 -->
+        <div class="form-group">
+            <label class="question-label">1. 认知失调与解决 (Cognitive Dissonance)</label>
+            <p class="question-desc">在阅读过程中，是否有某个具体的瞬间让你开始怀疑内容的准确性？如果有，是什么触发了这种怀疑？</p>
+            <textarea id="reflection_dissonance" class="form-control" rows="4" placeholder="请填写"></textarea>
+        </div>
+
+        <!-- b. 权威偏见 -->
+        <div class="form-group">
+            <label class="question-label">2. 认知信任与权威偏见 (Epistemic Trust)</label>
+            <p class="question-desc">AI生成内容的呈现方式（语气、逻辑或措辞的专业性等）有时可能影响我们对其可靠性的判断，这种“呈现方式”是否在某种程度上影响你对其可靠性的判断? 请从这一视角描述你在"相信AI"和"相信自己"之间的心理过程。</p>
+            <textarea id="reflection_authority" class="form-control" rows="4" placeholder="描述你的心理过程..."></textarea>
+        </div>
+
+        <!-- c. 临床迁移 -->
+        <div class="form-group">
+            <label class="question-label">3. 未来临床迁移 (Clinical Transfer)</label>
+            <p class="question-desc">经历过这次"找茬"练习后，如果你在未来的临床工作中通过 AI 辅助诊断，你会采取什么具体步骤来验证 AI 的建议？请列出你的验证清单。</p>
+            <textarea id="reflection_clinical" class="form-control" rows="4" placeholder="我的验证清单：1. ... 2. ..."></textarea>
+        </div>
+
+        <button onclick="submitStep2()">提交并进入测试</button>
+    </div>
+
+    <!-- Step 3: Post-test -->
+    <div id="step-3" class="step">
+        <h2>第三阶段：知识后测</h2>
+        <p>请根据刚才的学习内容及您的医学知识回答以下问题。</p>
+
+        <!-- Dynamic MCQs based on topic -->
+        <div id="mcq-container"></div>
+
+        <div class="form-group">
+            <label>简答题（临床迁移）：<br><span id="short-answer-prompt" style="font-weight: normal;"></span></label>
+            <textarea id="postTestShortAnswer"></textarea>
+        </div>
+
+        <button onclick="submitStep3()">提交并继续</button>
+    </div>
+
+    <!-- Step 4: Feedback -->
+    <div id="step-4" class="step">
+        <h2>第四阶段：体验反馈与反思</h2>
+        <p>本部分非常重要，请回顾刚才的分析过程，如实评价。</p>
+
+        <!-- Part A: Metacognition Likert Scale -->
+        <h3>A. 批判性思维过程自评</h3>
+        <p style="font-size:0.9em; color:#666;">请评价您在刚才分析病例时的实际思维状态（1=非常不符合，5=非常符合）。</p>
+        
+        <div class="likert-container" id="likertScaleArea">
+            <div class="scale-header">
+                <div style="flex:4"></div>
+                <div style="flex:6; display:flex; justify-content:space-between; padding:0 10px;">
+                    <span>1<br>不符合</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5<br>符合</span>
+                </div>
+            </div>
+            <!-- JS will inject items here -->
+        </div>
+
+        <!-- Part B: Difficulty Comparison -->
+        <h3>B. 任务难度与对比</h3>
+        
+        <div class="form-group">
+            <label>1. 刚才“找错误/总结”的任务整体难度如何？</label>
+            <select id="difficultyGeneral">
+                <option value="">-- 请选择 --</option>
+                <option value="Very Easy">非常容易</option>
+                <option value="Easy">比较容易</option>
+                <option value="Medium">中等</option>
+                <option value="Hard">比较困难</option>
+                <option value="Very Hard">非常困难</option>
+            </select>
+        </div>
+
+        <!-- Wrapper for Group A specific questions -->
+        <div id="group-a-specific" style="display:none;">
+            <div class="form-group">
+                <label>2. (仅针对纠错组) 你认为 AI 产生的“幻觉”（错误），是否比平常教授出的改错题更难发现？</label>
+                <select id="difficultyVsProf">
+                    <option value="">-- 请选择 --</option>
+                    <option value="AI is much harder">AI 的错误隐蔽性极强，难发现得多</option>
+                    <option value="AI is harder">AI 的错误稍微难一点</option>
+                    <option value="Same">两者难度差不多</option>
+                    <option value="Prof is harder">教授出的题更难</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="challenge_difficulty_desc">3. (仅针对纠错组) 与普通的纠错练习相比，识别 AI 生成的长文本错误对你的挑战主要在于？</label>
+                <div class="instruction-text" style="font-size: 0.9em; color: #666; margin-bottom: 5px;">
+                    请详细描述：是语言流畅度掩盖了逻辑漏洞？还是专业知识的真假参半？亦或是其他原因？
+                </div>
+                <textarea id="challenge_difficulty_desc" class="form-control" rows="4" placeholder="请输入您的具体感受..."></textarea>
+            </div>
+        </div>
+
+        <!-- Part C: Attitude & Open Feedback -->
+        <h3>C. 态度与建议</h3>
+
+        <div class="form-group">
+            <label>经过刚才的学习，你对未来使用 AI 辅助学习的态度有何变化？</label>
+            <select id="attitudeChange">
+                <option value="">-- 请选择 --</option>
+                <option value="More Cautious">变得更加谨慎/警惕 (More Cautious)</option>
+                <option value="No Change">没有变化 (No Change)</option>
+                <option value="More Positive">变得更加积极/信任 (More Positive)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>在这个测试过程中，关于将 LLM (大语言模型) 应用于医学教学，你有什么具体的感受或体会？</label>
+            <textarea id="openFeedback" placeholder="例如：你觉得这种学习方式有趣吗？它对你的临床思维有帮助吗？..."></textarea>
+        </div>
+
+        <button onclick="finishSurvey()">完成并生成数据文件</button>
+    </div>
+
+    <!-- Step 5: Finish -->
+    <div id="step-5" class="step">
+        <h1>请在腾讯问卷提交回答结果</h1>
+        <p>请点击下方按钮<b>下载数据文件</b>，并将其发送给指导教师。<br> 请通过以下链接提交：<a href="https://wj.qq.com/s2/25034630/07df/" target="_blank">
+            病理生理学CBL - 腾讯问卷
+          </a> 或手动复制此链接：https://wj.qq.com/s2/25034630/07df/</p>
+        <button onclick="downloadData()" style="background-color: #28a745;">下载结果后请点击上述链接提交 (.txt)</button>
+        <p style="text-align: center; margin-top: 20px; color: #666;">文件名格式：学号_Topic_Timestamp.txt</p>
+    </div>
+</div>
+
+<script>
+    // --- Configuration & Content Data ---
+    
+
+    const likertItems = [
+        "在分析病例时，我会尝试从更大的整体临床背景来思考问题。",
+        "病例材料中的观点或解释会促使我重新思考自己对病例的理解。",
+        "我会结合多种信息（如症状、体征、检验结果、病理生理机制等）来验证材料中的解释。",
+        "我会主动寻找材料之外的其他可能机制或替代性解释。",
+        "我会特别注意那些与我最初假设或直觉相矛盾的解释。",
+        "我会尝试理解不同角度或不同推理路径如何解释患者的病情。",
+        "我认为有必要为自己做出的病例结论提供充分的理由。",
+        "在阅读病例解释文本的过程中，我会不断重新审视自己的判断。",
+        "在接受材料中的解释之前，我会先判断其是否可信。",
+        "我会考虑如果依赖错误的解释，可能会造成怎样的临床后果。",
+        "在分析病例的过程中，我会反思自己的推理是否存在需要改进的地方。"
+    ];
+
+    // Render Likert Scale
+    const likertContainer = document.getElementById('likertScaleArea');
+    likertItems.forEach((item, index) => {
+        const row = document.createElement('div');
+        row.className = 'likert-row';
+        
+        let optionsHtml = '';
+        for(let i=1; i<=5; i++) {
+            optionsHtml += `
+                <div class="likert-option">
+                    <input type="radio" name="likert_${index}" value="${i}">
+                    <span>${i}</span>
+                </div>
+            `;
+        }
+
+        row.innerHTML = `
+            <div class="likert-statement">${index + 1}. ${item}</div>
+            <div class="likert-options">${optionsHtml}</div>
+        `;
+        likertContainer.appendChild(row);
+    });
+
+    const contentDB = {
+        cardiac: {
+            title: "病例 4-1：风湿性心脏病与心力衰竭",
+            // Correct text (Group C)
+            text_correct: `【病例分析】
+患者男，28岁，因风湿性心脏病入院。体检发现心尖区Ⅲ级粗糙吹风样收缩期杂音和舒张中期隆隆样杂音，肺动脉瓣区第二音亢进。心电图示右室肥大。
+
+病例分析报告：慢性风湿性心脏病伴心力衰竭
+
+病因与病理基础：
+患者有明确的风湿性心脏病史，体检发现心尖区舒张中期隆隆样杂音，提示存在二尖瓣狭窄。二尖瓣狭窄导致左心房血液流入左心室受阻，引起左心房压力升高和左心房代偿性肥大。
+
+血流动力学改变与左心衰竭表现：
+随着病情进展，左心房压力的持续升高逆向传导至肺静脉和肺毛细血管，导致肺循环淤血。肺毛细血管静水压升高，超过血浆胶体渗透压时，液体渗入肺泡和间质，引起肺水肿。临床表现为咳嗽、咳粉红色泡沫痰、端坐呼吸及夜间阵发性呼吸困难。
+
+右心衰竭的发生机制：
+长期肺淤血导致肺小动脉反应性收缩，加上肺血管壁增厚，引起肺动脉高压。肺动脉高压显著增加了右心室的后负荷（压力负荷），导致右心室代偿性肥大，最终发生右心衰竭。右心衰竭导致体循环静脉淤血，表现为颈静脉怒张、肝大、肝颈静脉反流征阳性及下肢水肿。
+
+心脏形态改变：
+X线显示的“梨形心”是左心房增大和肺动脉段突出的特征性表现。心电图显示的右室肥大进一步证实了肺动脉高压对右心的影响。`,
+            
+            // Hallucinated text (Group A) - Logic Error: MS causes LV Hypertrophy directly
+            text_error: `【病例分析】
+患者男，28岁，因风湿性心脏病入院。体检发现心尖区Ⅲ级粗糙吹风样收缩期杂音和舒张中期隆隆样杂音，肺动脉瓣区第二音亢进。心电图示右室肥大。
+
+病例分析报告：慢性风湿性心脏病伴心力衰竭
+
+病因与病理基础：
+患者有明确的风湿性心脏病史，体检发现心尖区舒张中期隆隆样杂音，提示存在二尖瓣狭窄。二尖瓣狭窄导致左心房血液流入左心室受阻，为了克服狭窄瓣口的阻力，左心室发生显著的代偿性向心性肥大，以维持足够的心输出量。
+
+血流动力学改变与左心衰竭表现：
+随着病情进展，左心房压力的持续升高逆向传导至肺静脉和肺毛细血管，导致肺循环淤血。此时，由于肺毛细血管通透性急剧增加，大量血浆蛋白渗出，导致严重的非心源性肺水肿，临床表现为咳嗽、咳粉红色泡沫痰、端坐呼吸及夜间阵发性呼吸困难。
+
+右心衰竭的发生机制：
+长期肺淤血导致肺小动脉反应性收缩，加上肺血管壁增厚，引起肺动脉高压。肺动脉高压显著增加了右心室的前负荷（容量负荷），导致右心室代偿性扩张，最终发生右心衰竭。右心衰竭导致体循环静脉淤血，表现为颈静脉怒张、肝大、肝颈静脉反流征阳性及下肢水肿。`,
+            
+            mcqs: [
+                { q: "本例患者发生呼吸困难的最基本机制是？", options: ["肺淤血/水肿", "支气管痉挛", "呼吸中枢抑制", "胸廓顺应性降低"] },
+                { q: "二尖瓣狭窄时，心脏负荷的改变主要为？", options: ["左房压力负荷增加", "左室容量负荷增加", "左室压力负荷增加", "右室容量负荷增加"] },
+                { q: "右心衰竭引起水肿的主要机制是？", options: ["毛细血管流体静压升高", "血浆胶体渗透压降低", "淋巴回流受阻", "毛细血管通透性增加"] },
+            { 
+                q: "导致该患者肺动脉高压的因素中，属于功能性因素的是？", 
+                options: ["缺氧和酸中毒致肺小动脉收缩", "肺血管内膜增厚", "肺血管床减少", "肺小动脉中层平滑肌增生"] 
+            },
+            { 
+                q: "长期肺淤血导致肺组织出现“褐色硬化”，其主要病理基础是？", 
+                options: ["含铁血黄素沉着与纤维组织增生", "肺泡上皮细胞增生", "中性粒细胞大量浸润", "支气管平滑肌肥大"] 
+            }
+            ],
+            shortQ: "如果患者出现夜间阵发性呼吸困难，请解释其发生机制（从迷走神经和回心血量角度）。"
+        },
+        
+        respiratory: {
+            title: "病例 1-2：COPD 与呼吸衰竭",
+            text_correct: `【病例分析】
+患者女性，78岁，COPD病史13年。此次因感染诱发呼吸衰竭入院。血气分析：PaO2 39.6 mmHg, PaCO2 71.1 mmHg, pH 7.26。
+
+病例分析报告：挤压综合征与多器官功能衰竭
+
+休克与再灌注损伤机制：
+患者长时间被重物挤压，导致骨骼肌缺血坏死。解除压迫后，大量组织间液渗入受损组织，有效循环血量急剧减少，引发低血容量性休克。输液治疗改善了局部循环，但也导致了再灌注损伤：坏死肌肉释放的大量肌红蛋白、钾离子和酸性代谢产物被“冲刷”入血。
+
+高钾血症的发生机制：
+患者血钾从 5.3 升至 8.6 mmol/L，这是一种致死性的电解质紊乱。其原因主要有二：一是细胞破坏释放，横纹肌溶解导致细胞内高浓度的钾离子直接释放入血；二是肾脏排泄障碍，急性肾衰竭导致少尿，钾离子无法排出。此外，严重的代谢性酸中毒也会导致细胞内钾离子向细胞外转移。
+
+急性肾衰竭（AKI）机制：
+患者出现酱油色尿（肌红蛋白尿）和无尿。肌红蛋白在肾小管内形成管型，阻塞管腔；同时，肌红蛋白分解产物具有直接肾毒性。结合休克导致的肾灌注不足（肾前性因素），共同引起了急性肾小管坏死（ATN），导致肾功能急剧恶化。`,
+            
+            // Hallucination: Confusing Type I and II mechanisms regarding O2 therapy
+            text_error: `【病例分析】
+患者女性，78岁，COPD病史13年。此次因感染诱发呼吸衰竭入院。血气分析：PaO2 39.6 mmHg, PaCO2 71.1 mmHg, pH 7.26。
+
+病例分析报告：挤压综合征与多器官功能衰竭
+
+休克与再灌注损伤机制：
+患者长时间被重物挤压，导致骨骼肌缺血坏死。解除压迫后，大量组织间液渗入受损组织，有效循环血量急剧减少，引发低血容量性休克。输液治疗改善了局部循环，但也导致了再灌注损伤：坏死肌肉释放的大量肌红蛋白、钾离子和酸性代谢产物被“冲刷”入血。
+
+高钾血症的发生机制：
+患者血钾从 5.3 升至 8.6 mmol/L，这是一种致死性的电解质紊乱。其主要原因是大量输液导致的稀释性效应，使得血浆渗透压降低，迫使细胞内的钾离子顺浓度梯度快速外流。同时，由于患者处于休克状态，醛固酮分泌受到极度抑制，导致肾脏排钾功能完全丧失。
+
+急性肾衰竭（AKI）机制：
+患者出现酱油色尿（肌红蛋白尿）和无尿。其核心机制是肌红蛋白分子量巨大，无法通过肾小球滤过膜，从而在肾小球毛细血管内大量堆积，造成肾小球滤过率（GFR）机械性下降，最终导致急性肾衰竭。`,
+            
+            mcqs: [
+                { q: "II型呼吸衰竭的血气诊断标准是？", options: ["PaO2<60mmHg, PaCO2>50mmHg", "PaO2<60mmHg, PaCO2正常", "PaO2>60mmHg, PaCO2>50mmHg", "PaO2<50mmHg, PaCO2>60mmHg"] },
+                { q: "肺心病肺动脉高压形成的最重要因素是？", options: ["缺氧性肺血管收缩", "肺血管床减少", "血液粘滞度增加", "血容量增加"] },
+                { q: "COPD患者发生呼衰的主要机制是？", options: ["阻塞性通气障碍", "限制性通气障碍", "弥散障碍", "死腔样通气"] },
+            { 
+                q: "对该患者（II型呼衰）进行氧疗时，若吸入高浓度氧可能导致呼吸抑制，其原因是？", 
+                options: ["解除了低氧对外周化学感受器的刺激", "解除了高CO2对中枢化学感受器的刺激", "导致氧中毒", "引起支气管痉挛"] 
+            },
+            { 
+                q: "该患者处于慢性呼吸性酸中毒代偿期时，机体主要的代偿调节机制是？", 
+                options: ["肾脏重吸收HCO3-增加", "细胞内缓冲系统作用", "肺泡通气量增加", "血浆蛋白缓冲作用"] 
+            }
+            ],
+            shortQ: "为什么对该患者（II型呼衰）不能进行高浓度吸氧？请解释其对呼吸中枢的影响。"
+        },
+
+        shock: {
+            title: "病例 3-1：创伤性休克与急性肾衰",
+            text_correct: `【病例分析】
+患者男性，24岁，严重挤压伤。入院时BP 65/40 mmHg，少尿，酱油色尿。
+
+病例分析报告：COPD急性加重与肺源性心脏病
+
+呼吸衰竭类型与机制：
+患者有长期慢支病史，此次出现神志不清、紫绀，血气分析示 PaO2 39.6 mmHg (<60)，PaCO2 71.1 mmHg (>50)，诊断为II型呼吸衰竭。其主要机制是气道阻塞导致肺泡通气量下降（肺泡低通气），使得氧气进不去（低氧），二氧化碳出不来（潴留）。
+
+肺源性心脏病（肺心病）机制：
+缺氧和高碳酸血症导致肺血管收缩，引起肺动脉高压。长期肺动脉高压增加了右心室的后负荷，导致右心室肥大、扩张，最终发生右心衰竭。体检发现的颈静脉怒张、肝大、下肢水肿均为右心衰竭致体循环淤血的表现。
+
+酸碱平衡紊乱分析：
+pH 7.26（酸中毒），PaCO2 71.1 mmHg（显著升高），HCO3- 33 mmol/L（升高）。原发病变为COPD导致的CO2潴留，故为呼吸性酸中毒。HCO3- 升高是肾脏针对慢性高碳酸血症进行的代偿性调节（重吸收HCO3-增加），但由于本次急性加重，肾脏代偿不足，导致pH值仍低于正常下限（失代偿）。`,
+            
+            // Hallucination: Incorrect cause of hyperkalemia and shock logic
+            text_error: `【病例分析】
+患者男性，24岁，严重挤压伤。入院时BP 65/40 mmHg，少尿，酱油色尿。
+
+病例分析报告：COPD急性加重与肺源性心脏病
+
+呼吸衰竭类型与机制：
+患者有长期慢支病史，此次出现神志不清、紫绀，血气分析示 PaO2 39.6 mmHg，PaCO2 71.1 mmHg，诊断为II型呼吸衰竭。其主要机制是气道阻塞导致肺泡通气量下降。针对此种情况，应立即给予高浓度（>50%）吸氧，以迅速纠正严重的低氧血症，防止脑缺氧损伤。
+
+肺源性心脏病（肺心病）机制：
+缺氧和高碳酸血症刺激迷走神经兴奋，导致肺血管平滑肌强烈收缩，引起肺动脉高压。长期肺动脉高压增加了右心室的后负荷，导致右心室肥大、扩张，最终发生右心衰竭。体检发现的颈静脉怒张、肝大、下肢水肿均为右心衰竭致体循环淤血的表现。
+
+酸碱平衡紊乱分析：
+pH 7.26（酸中毒），PaCO2 71.1 mmHg（显著升高），HCO3- 33 mmol/L（升高）。原发病变为COPD导致的呼吸性酸中毒。其中 HCO3- 的升高表明患者合并了严重的代谢性碱中毒，这可能是由于患者前期使用了利尿剂治疗水肿所致，属于混合型酸碱平衡紊乱。`,
+            
+            mcqs: [
+                { q: "休克早期微循环变化的特点是？", options: ["缺血少灌", "淤血多灌", "DIC形成", "毛细血管通透性增加"] },
+                { q: "挤压综合征引起急性肾衰的主要机制不包括？", options: ["肾小球免疫复合物沉积", "肾缺血", "肌红蛋白管型阻塞", "肾毒性物质作用"] },
+                { q: "高钾血症对心脏最严重的危害是？", options: ["心室纤颤/停搏", "心动过速", "心肌收缩力增强", "房室传导阻滞"] },{ 
+                q: "休克代偿期（缺血缺氧期），机体维持动脉血压的主要代偿机制是？", 
+                options: ["自身输液和自身输血作用", "心脑血管收缩", "组织液生成增加", "副交感神经兴奋"] 
+            },
+            { 
+                q: "缺血-再灌注损伤导致细胞死亡的关键介质是？", 
+                options: ["氧自由基生成增多与钙超载", "乳酸堆积", "钾离子外流", "儿茶酚胺减少"] 
+            }
+            ],
+            shortQ: "该患者在休克复苏后出现多器官功能衰竭（MOF），请简述缺血-再灌注损伤在其中的作用。"
+        }
+    };
+
+    // --- State Management ---
+    let surveyData = {
+        studentId: "",
+        topic: "",
+        group: "", // 'A' (Error) or 'C' (Correct)
+        startTime: new Date().toISOString(),
+        phase1: {},
+        phase2: {},
+        phase3: {},
+        phase4: {}
+    };
+
+    // --- Functions ---
+
+    function startExperiment() {
+        const sid = document.getElementById('studentId').value.trim();
+        const topic = document.getElementById('topicSelect').value;
+
+        if (!sid || !topic) {
+            alert("请填写学号并选择主题。");
+            return;
+        }
+
+        surveyData.studentId = sid;
+        surveyData.topic = topic;
+
+        // Randomization Logic: 50% chance
+        surveyData.group = Math.random() < 0.5 ? 'A' : 'C'; 
+
+        // Load Content
+        const content = contentDB[topic];
+        const textToDisplay = surveyData.group === 'A' ? content.text_error : content.text_correct;
+        
+        document.getElementById('caseDisplay').innerText = textToDisplay;
+
+        // Move to Step 1
+        switchStep(0, 1);
+    }
+
+    function submitStep1() {
+        const trust = document.getElementById('trustScore').value;
+        const turing = document.getElementById('turingTest').value;
+
+        if (!turing) {
+            alert("请完成所有问题。");
+            return;
+        }
+
+        surveyData.phase1 = {
+            trustScore: trust,
+            turingTest: turing,
+            timestamp: new Date().toISOString()
+        };
+
+        // Prepare Step 2 (Intervention)
+        prepareStep2();
+        switchStep(1, 2);
+    }
+
+    function prepareStep2() {
+        const instructionDiv = document.getElementById('intervention-text');
+        const taskLabel = document.getElementById('task-label');
+        
+        // Copy text from Step 1 to Step 2 for reference
+        document.getElementById('caseDisplayRef').innerText = document.getElementById('caseDisplay').innerText;
+
+        if (surveyData.group === 'A') {
+            // Experimental Group (Correcting Errors)
+            instructionDiv.innerHTML = `
+                <strong>⚠️ 身份揭示：</strong><br>
+                实际上，刚才的报告是由 <strong>AI 生成的</strong>，并且包含 <strong>3处关键的病理生理机制错误</strong>（幻觉）。<br>
+                请作为“医学审核员”，找出这3处错误，并写出正确的机制。
+            `;
+            taskLabel.innerText = "请列出你发现的错误及修正：";
+        } else {
+            // Control Group (Summarizing)
+            instructionDiv.innerHTML = `
+                <strong>✅ 身份揭示：</strong><br>
+                这份报告是由 AI 生成并经教授审核的 <strong>准确内容</strong>。<br>
+                请作为“学习者”，阅读并总结出该病例的 3 个核心病理生理机制。
+            `;
+            taskLabel.innerText = "请总结核心机制：";
+        }
+    }
+
+    function submitStep2() {
+        const response = document.getElementById('interventionResponse').value.trim();
+        
+        if (response.length < 10) {
+            alert("请填写更详细的回答。");
+            return;
+        }
+
+        surveyData.phase2 = {
+            taskResponse: response,
+            timestamp: new Date().toISOString()
+        };
+
+        prepareStep3();
+        switchStep(2, 3);
+    }
+
+    function prepareStep3() {
+        const content = contentDB[surveyData.topic];
+        const mcqContainer = document.getElementById('mcq-container');
+        
+        // Render MCQs
+        let html = '';
+        content.mcqs.forEach((item, index) => {
+            html += `<div class="form-group">
+                <label>${index + 1}. ${item.q}</label>
+                <select id="mcq_${index}">
+                    <option value="">-- 选择 --</option>
+                    ${item.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
+                </select>
+            </div>`;
+        });
+        mcqContainer.innerHTML = html;
+
+        // Render Short Answer Prompt
+        document.getElementById('short-answer-prompt').innerText = content.shortQ;
+    }
+
+    function submitStep3() {
+        const content = contentDB[surveyData.topic];
+        
+        // Collect MCQs
+        let mcqAnswers = [];
+        let allAnswered = true;
+        content.mcqs.forEach((_, index) => {
+            const val = document.getElementById(`mcq_${index}`).value;
+            if(!val) allAnswered = false;
+            mcqAnswers.push(val);
+        });
+
+        const shortAns = document.getElementById('postTestShortAnswer').value;
+        
+        if (!allAnswered || !shortAns) {
+            alert("请回答所有问题。");
+            return;
+        }
+
+        surveyData.phase3 = {
+            mcqAnswers: mcqAnswers,
+            shortAnswer: shortAns,
+            timestamp: new Date().toISOString()
+        };
+
+        prepareStep4();
+        switchStep(3, 4);
+    }
+
+    function prepareStep4() {
+        // 修正：使用正确的 ID 来控制显示/隐藏
+        const groupASpecificDiv = document.getElementById('group-a-specific');
+        
+        if (surveyData.group === 'A') {
+            groupASpecificDiv.style.display = 'block';
+        } else {
+            groupASpecificDiv.style.display = 'none';
+        }
+    }
+
+    function finishSurvey() {
+        // 1. 收集 Likert 量表数据
+        let likertScores = {};
+        let allLikertAnswered = true;
+
+        likertItems.forEach((item, index) => {
+            // 获取选中的 radio
+            const checkedOption = document.querySelector(`input[name="likert_${index}"]:checked`);
+            if (checkedOption) {
+                likertScores[`Q${index + 1}`] = parseInt(checkedOption.value);
+            } else {
+                allLikertAnswered = false;
+            }
+        });
+
+        if (!allLikertAnswered) {
+            alert("请完成“批判性思维过程自评”中的所有评分。");
+            return;
+        }
+
+        // 2. 收集通用难度和态度
+        const diffGeneral = document.getElementById('difficultyGeneral').value;
+        const attitude = document.getElementById('attitudeChange').value;
+        const openFeedback = document.getElementById('openFeedback').value;
+
+        if (!diffGeneral || !attitude) {
+            alert("请回答难度评价和态度变化问题。");
+            return;
+        }
+
+        // 3. 收集纠错组（Group A）的特定数据
+        let diffVsProf = "N/A";
+        let diffReason = "N/A";
+
+        if (surveyData.group === 'A') {
+            diffVsProf = document.getElementById('difficultyVsProf').value;
+            diffReason = document.getElementById('challenge_difficulty_desc').value;
+            
+            if (!diffVsProf || !diffReason) {
+                alert("请完成针对纠错任务的特定问题。");
+                return;
+            }
+        }
+
+        const reflectionData = {
+            dissonance: document.getElementById('reflection_dissonance').value,
+            authority: document.getElementById('reflection_authority').value,
+            clinical: document.getElementById('reflection_clinical').value
+        };
+        
+        // 4. 写入数据对象
+        surveyData.phase4 = {
+            likertScores: likertScores, // 之前缺失的部分
+            difficultyGeneral: diffGeneral,
+            difficultyVsProf: diffVsProf,
+            difficultyReason: diffReason,
+            attitudeChange: attitude,
+            openFeedback: openFeedback,
+            timestamp: new Date().toISOString(),
+            deepReflection: reflectionData,
+        };
+
+        switchStep(4, 5);
+    }
+
+    function downloadData() {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(surveyData, null, 2));
+        const downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href", dataStr);
+        
+        const fileName = `${surveyData.studentId}_${surveyData.topic}_${new Date().getTime()}.txt`;
+        downloadAnchorNode.setAttribute("download", fileName);
+        
+        document.body.appendChild(downloadAnchorNode);
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+    }
+
+    function switchStep(current, next) {
+        document.getElementById(`step-${current}`).classList.remove('active');
+        document.getElementById(`step-${next}`).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    function updateTopic() {
+        const id = document.getElementById("studentId").value.trim();
+        if (id.length < 2) return;
+
+        // 取后两位
+        const last2 = parseInt(id.slice(-2), 10);
+
+        // 计算 (后两位 % 3) + 1
+        const topicNum = (last2 % 3) + 1;
+
+        // 显示到下拉框
+        const select = document.getElementById("topicSelect");
+        if (topicNum === 1) select.value = "cardiac";
+        if (topicNum === 2) select.value = "respiratory";
+        if (topicNum === 3) select.value = "shock";
+
+        select.disabled = true;
+    }
+
+</script>
+
+
+
+</body></html>
