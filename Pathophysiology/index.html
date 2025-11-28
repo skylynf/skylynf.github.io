@@ -268,7 +268,7 @@
         <h3>感知测试</h3>
         
         <div class="form-group">
-            <label>1. 置信度打分：你认为这篇分析报告的医学准确性是多少？(0-100)</label>
+            <label>1. 置信度打分：你认为这篇分析报告的<b>医学准确性</b>是多少？(0-100)</label>
             <input type="range" id="trustScore" min="0" max="100" value="50" oninput="document.getElementById('trustVal').innerText = this.value">
             <div class="range-val"><span id="trustVal">50</span> 分</div>
         </div>
@@ -279,6 +279,7 @@
                 <option value="">-- 请选择 --</option>
                 <option value="definitely_ai">肯定是 AI</option>
                 <option value="probably_ai">可能是 AI</option>
+                <option value="not_sure_ai">无法确定</option>
                 <option value="probably_human">可能是人类教授</option>
                 <option value="definitely_human">肯定是人类教授</option>
             </select>
@@ -396,6 +397,7 @@
                     <option value="AI is harder">AI 的错误稍微难一点</option>
                     <option value="Same">两者难度差不多</option>
                     <option value="Prof is harder">教授出的题更难</option>
+                    <option value="Prof is much harder">教授出的比AI难得多</option>
                 </select>
             </div>
 
@@ -416,9 +418,11 @@
             <label>经过刚才的学习，你对未来使用 AI 辅助学习的态度有何变化？</label>
             <select id="attitudeChange">
                 <option value="">-- 请选择 --</option>
-                <option value="More Cautious">变得更加谨慎/警惕 (More Cautious)</option>
+                <option value="Very Cautious">非常谨慎/警惕，或不再使用 (Very Cautious)</option>
+                <option value="More Cautious">使用中更加谨慎/警惕 (More Cautious)</option>
                 <option value="No Change">没有变化 (No Change)</option>
                 <option value="More Positive">变得更加积极/信任 (More Positive)</option>
+                <option value="Very Positive">有信心AI完全没问题 (Very Positive)</option>
             </select>
         </div>
 
@@ -437,6 +441,11 @@
             病理生理学CBL - 腾讯问卷
           </a> 或手动复制此链接：https://wj.qq.com/s2/25034630/07df/</p>
         <button onclick="downloadData()" style="background-color: #28a745;">下载结果后请点击上述链接提交 (.txt)</button>
+            <!-- 新增按钮 -->
+        <button onclick="window.open('https://wj.qq.com/s2/25034630/07df/', '_blank')" 
+            style="background-color:#007bff; margin-top:10px;">
+        前往腾讯问卷
+        </button>
         <p style="text-align: center; margin-top: 20px; color: #666;">文件名格式：学号_Topic_Timestamp.txt</p>
     </div>
 </div>
