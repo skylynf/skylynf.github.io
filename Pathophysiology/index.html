@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>病理生理学 CBL：AI 辅助学习研究</title>
+    <title>病理生理学 CBL：教研问卷</title>
     <style>
         :root {
             --primary-color: #0056b3;
@@ -229,7 +229,7 @@
                 <li>根据系统指令完成特定的深度学习任务（纠错或总结）。</li>
                 <li>完成知识后测与体验反馈。</li>
             </ol>
-            <p><em><b>注意：本测验的题目没有对错区分！根据真实想法认真作答即可获取对应分数。</b></em></p>
+            <p><em><b>注意：本测验的题目没有对错区分！根据真实想法认真作答即可获取对应分数。请尽可能详细回答每个问题。</b></em></p>
             <p><b>在测试过程中，请不要使用任何形式的AI辅助作答。</b></p>
             
         </div>
@@ -291,6 +291,12 @@
                 <option value="probably_human">可能是人类教授</option>
                 <option value="definitely_human">肯定是人类教授</option>
             </select>
+        </div>
+
+        
+        <div class="form-group">
+            <label id="task-label" style="font-size: 1.1em; color: var(--primary-color);">图灵测试：你为什么这么认为？请详细说明。</label>
+            <textarea id="turingTestReason" placeholder="在此输入您的分析..."></textarea>
         </div>
 
         <button onclick="submitStep1()">提交并进入下一阶段</button>
@@ -364,7 +370,7 @@
 
         <!-- Part A: Metacognition Likert Scale -->
         <h3>A. 批判性思维过程自评</h3>
-        <p style="font-size:0.9em; color:#666;">请评价您在刚才分析病例时的实际思维状态（1=非常不符合，5=非常符合）。</p>
+        <p style="font-size:0.9em; color:#666;">请评价您在刚才得知AI撰写后，分析病例（总结/找错误）时的实际思维状态（1=非常不符合，5=非常符合）。</p>
         
         <div class="likert-container" id="likertScaleArea">
             <div class="scale-header">
@@ -463,7 +469,7 @@
     
 
     const likertItems = [
-        "在分析病例时，我会尝试从更大的整体临床背景来思考问题。",
+        "在分析(总结/找错误)病例时，我会尝试从更大的整体临床背景来思考问题。",
         "病例材料中的观点或解释会促使我重新思考自己对病例的理解。",
         "我会结合多种信息（如症状、体征、检验结果、病理生理机制等）来验证材料中的解释。",
         "我会主动寻找材料之外的其他可能机制或替代性解释。",
@@ -693,7 +699,8 @@ pH 7.26（酸中毒），PaCO2 71.1 mmHg（显著升高），HCO3- 33 mmol/L（�
         const profvalue = document.getElementById('professionalScore').value;
         const trust = document.getElementById('trustScore').value;
         const turing = document.getElementById('turingTest').value;
-
+        const turingReason = document.getElementById('turingTestReason').value;
+        
         if (!turing) {
             alert("请完成所有问题。");
             return;
@@ -703,6 +710,7 @@ pH 7.26（酸中毒），PaCO2 71.1 mmHg（显著升高），HCO3- 33 mmol/L（�
             professionalScore: profvalue,
             trustScore: trust,
             turingTest: turing,
+            turingTestReason: turingReason,
             timestamp: new Date().toISOString()
         };
 
@@ -722,8 +730,8 @@ pH 7.26（酸中毒），PaCO2 71.1 mmHg（显著升高），HCO3- 33 mmol/L（�
             // Experimental Group (Correcting Errors)
             instructionDiv.innerHTML = `
                 <strong>⚠️ 身份揭示：</strong><br>
-                实际上，刚才的报告是由 <strong>AI 生成的</strong>，并且包含 <strong>3处关键的病理生理机制错误</strong>（幻觉）。<br>
-                请作为“医学审核员”，找出这3处错误，并写出正确的机制。
+                实际上，刚才的报告是由 <strong>AI 生成的</strong>，并且可能包含 <strong>病理生理机制错误</strong>（AI幻觉）。<br>
+                请作为“医学审核员”，审查该报告段落，找出任何可能存在的错误，并写出正确的机制。（可能没有错误或一到若干项错误）
             `;
             taskLabel.innerText = "请列出你发现的错误及修正：";
         } else {
@@ -731,7 +739,7 @@ pH 7.26（酸中毒），PaCO2 71.1 mmHg（显著升高），HCO3- 33 mmol/L（�
             instructionDiv.innerHTML = `
                 <strong>✅ 身份揭示：</strong><br>
                 这份报告是由 AI 生成并经教授审核的 <strong>准确内容</strong>。<br>
-                请作为“学习者”，阅读并总结出该病例的 3 个核心病理生理机制。
+                请作为“学习者”，阅读并总结出该病例的若干个核心病理生理机制。
             `;
             taskLabel.innerText = "请总结核心机制：";
         }
