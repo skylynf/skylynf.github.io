@@ -11,9 +11,9 @@ nav_order: 3
 
 ### Conferences
 
-- IEEE BIBM 2026: reviewer for 8 manuscripts.
-- AAAI 2026: reviewer for 6 manuscripts.
-- AAAI 2027: invited reviewer; manuscript assignments pending.
+- IEEE BIBM 2026: Program Committee, reviewed 8 manuscripts.
+- AAAI 2026: Program Committee, reviewed 6 manuscripts.
+- AAAI 2027: invited Program Committee, manuscript assignments pending.
 - ICCV 2025: reviewer for 1 manuscript.
 - WACV 2025: reviewer for 1 manuscript.
 - NIPS 2026: reviewer for 1 manuscript.
