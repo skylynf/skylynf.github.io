@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
+        },{id: "nav-academic-service",
+          title: "academic service",
+          description: "Academic service and peer-review contributions.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/service/";
+          },
         },{id: "nav-cv",
           title: "cv",
           description: "",
