@@ -23,13 +23,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/service/";
           },
-        },{id: "nav-cv",
-          title: "cv",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/cv/";
-          },
         },{id: "news-our-paper-biteeeg-was-accepted-by-bibm-2025",
           title: 'Our paper BiteEEG was accepted by BIBM 2025.',
           description: "",
