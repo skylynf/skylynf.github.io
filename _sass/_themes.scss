@@ -164,3 +164,22 @@ html[data-theme-setting="light"] {
     display: block;
   }
 }
+
+// Accent palettes. Blue is the default (set in :root / html[data-theme="dark"] above).
+// html[data-accent="teal"] overrides only the accent-related custom properties so
+// the existing light/dark/system theme toggle keeps working.
+html[data-accent="teal"] {
+  --global-theme-color: #0b6e69;
+  --global-hover-color: #08504c;
+  --global-accent-tint: #e8f2f1;
+  --global-highlight-color: #0b6e69;
+  --global-code-bg-color: rgba(11, 110, 105, 0.06);
+}
+
+html[data-theme="dark"][data-accent="teal"] {
+  --global-theme-color: #5ec4b8;
+  --global-hover-color: #8ad8ce;
+  --global-accent-tint: rgba(94, 196, 184, 0.12);
+  --global-highlight-color: #5ec4b8;
+  --global-code-bg-color: #{$code-bg-color-dark};
+}

@@ -125,6 +125,19 @@
               </button>
             </li>
           {% endif %}
+          <li class="toggle-container">
+            <button
+              type="button"
+              id="accent-toggle"
+              title="Switch accent color"
+              aria-label="Switch accent color"
+            >
+              <span class="accent-swatch" aria-hidden="true">
+                <span class="accent-dot accent-dot-blue"></span>
+                <span class="accent-dot accent-dot-teal"></span>
+              </span>
+            </button>
+          </li>
           {% if site.enable_darkmode %}
             <!-- Toogle theme mode -->
             <li class="toggle-container">

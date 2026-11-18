@@ -124,6 +124,81 @@ hr {
   font-size: 0.9rem;
 }
 
+#accent-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  cursor: pointer;
+
+  .accent-swatch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.22rem;
+    padding: 0.18rem 0.32rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 999px;
+    background: var(--global-card-bg-color);
+    line-height: 0;
+  }
+
+  .accent-dot {
+    display: block;
+    width: 0.62rem;
+    height: 0.62rem;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--global-text-color) 12%, transparent);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      opacity 0.15s ease;
+  }
+
+  .accent-dot-blue {
+    background: #2457c5;
+  }
+
+  .accent-dot-teal {
+    background: #0b6e69;
+  }
+
+  &:hover .accent-swatch {
+    border-color: color-mix(in srgb, var(--global-theme-color) 35%, var(--global-divider-color));
+  }
+}
+
+html[data-theme="dark"] #accent-toggle {
+  .accent-dot-blue {
+    background: #7aa7ff;
+  }
+
+  .accent-dot-teal {
+    background: #5ec4b8;
+  }
+}
+
+html[data-accent="blue"] #accent-toggle .accent-dot-blue,
+html:not([data-accent="teal"]) #accent-toggle .accent-dot-blue {
+  box-shadow: 0 0 0 1.5px var(--global-text-color);
+  transform: scale(1.08);
+}
+
+html[data-accent="teal"] #accent-toggle .accent-dot-teal {
+  box-shadow: 0 0 0 1.5px var(--global-text-color);
+  transform: scale(1.08);
+}
+
+html[data-accent="teal"] #accent-toggle .accent-dot-blue,
+html[data-accent="blue"] #accent-toggle .accent-dot-teal {
+  opacity: 0.72;
+}
+
+@media (max-width: 575.98px) {
+  #accent-toggle {
+    padding: 0.35rem 0;
+  }
+}
+
 // ---------- Page header ----------
 .post-header {
   margin-bottom: 1.75rem;
