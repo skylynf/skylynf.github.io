@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>SkyLYnf</a>. The Ohio State University. 
+subtitle: <a href='https://github.com/skylynf'>SkyLYnf</a>. The Ohio State University.
 
 profile:
   align: right
@@ -19,7 +19,7 @@ social: false # includes social icons at the bottom of the page
 announcements:
   enabled: true # includes a list of news items
   scrollable: false # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  limit: 8 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
   enabled: false

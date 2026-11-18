@@ -13,7 +13,8 @@ nav_order: 3
 
 - IEEE BIBM 2026: Program Committee, reviewed 8 manuscripts.
 - AAAI 2026: Program Committee, reviewed 6 manuscripts.
-- AAAI 2027: invited Program Committee, manuscript assignments pending.
+- AAAI 2027: Program Committee.
+- IEEE ISBI 2027: Program Committee.
 - ICCV 2025: reviewer for 1 manuscript.
 - WACV 2025: reviewer for 1 manuscript.
 - NIPS 2026: reviewer for 1 manuscript.
@@ -23,3 +24,4 @@ nav_order: 3
 ### Journals
 
 - IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI): reviewer for 1 manuscript.
+- Frontiers in Digital Health: reviewer.
