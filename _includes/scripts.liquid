@@ -325,3 +325,9 @@
 {% if site.newsletter.enabled %}
   <script defer src="{{ '/assets/js/newsletter.js' | relative_url | bust_file_cache }}"></script>
 {% endif %}
+
+{% if page.extra_js %}
+  {% for js in page.extra_js %}
+    <script defer src="{{ js | relative_url | bust_file_cache }}"></script>
+  {% endfor %}
+{% endif %}

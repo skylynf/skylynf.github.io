@@ -2,10 +2,10 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Selected projects.
-nav: false
+description: Selected project pages.
+nav: true
 nav_order: 3
-display_categories: [work, fun]
+display_categories: [generative models]
 horizontal: false
 ---
 
@@ -29,7 +29,7 @@ horizontal: false
     </div>
   </div>
   {% else %}
-  <div class="row row-cols-1 row-cols-md-3">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     {% for project in sorted_projects %}
       {% include projects.liquid %}
     {% endfor %}
@@ -55,7 +55,7 @@ horizontal: false
     </div>
   </div>
   {% else %}
-  <div class="row row-cols-1 row-cols-md-3">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     {% for project in sorted_projects %}
       {% include projects.liquid %}
     {% endfor %}

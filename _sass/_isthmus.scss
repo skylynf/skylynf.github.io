@@ -1,0 +1,645 @@
+/*******************************************************************************
+ * Isthmus project page + light polish for the projects index.
+ * Colors use CSS variables so the blue/teal accent switcher and light/dark
+ * themes apply automatically.
+ ******************************************************************************/
+
+// ---------- Projects index ----------
+.projects {
+  h2.category {
+    font-family: $font-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--global-text-color-light);
+    border-bottom: 1px solid var(--global-divider-color);
+    text-align: right;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    padding-top: 0.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card {
+    background: var(--global-card-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 14px;
+    box-shadow: var(--global-card-shadow);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+    .card-img-top,
+    img.card-img-top {
+      border-radius: 0;
+      background: var(--global-bg-color);
+    }
+
+    .card-title {
+      font-family: $font-serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-text {
+      color: var(--global-text-color-light);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+
+    .card {
+      transform: translateY(-2px);
+      border-color: var(--global-theme-color);
+      box-shadow: var(--global-card-shadow);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects .card,
+  .projects a:hover .card {
+    transition: none;
+    transform: none;
+  }
+}
+
+// ---------- Isthmus project page ----------
+.project-page {
+  .isthmus {
+    max-width: 100%;
+    color: var(--global-text-color);
+  }
+
+  .isthmus-hero {
+    text-align: center;
+    margin: 0 auto 2.25rem;
+  }
+
+  .isthmus-kicker {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--global-theme-color);
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+  }
+
+  .isthmus-hero h1 {
+    font-family: $font-serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 0.6rem;
+  }
+
+  .isthmus-subtitle {
+    font-family: $font-serif;
+    font-weight: 500;
+    font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+    line-height: 1.4;
+    color: var(--global-text-color);
+    margin: 0 auto 1.35rem;
+    max-width: 36rem;
+  }
+
+  .isthmus-authors {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    margin-bottom: 0.35rem;
+
+    .isthmus-me {
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    sup {
+      font-size: 0.7em;
+      font-style: normal;
+      font-weight: 500;
+    }
+  }
+
+  .isthmus-affil {
+    font-size: 0.86rem;
+    color: var(--global-text-color-light);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .isthmus-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .isthmus-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.38rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--global-divider-color);
+    background: var(--global-card-bg-color);
+    color: var(--global-text-color);
+    font-size: 0.86rem;
+    font-weight: 550;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background: var(--global-accent-tint);
+      border-color: var(--global-theme-color);
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+
+  .isthmus-section {
+    margin: 2.4rem 0;
+  }
+
+  .isthmus-section h2 {
+    font-family: $font-serif;
+    font-weight: 600;
+    font-size: 1.45rem;
+    margin-bottom: 0.85rem;
+    letter-spacing: -0.01em;
+  }
+
+  .isthmus-section h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-top: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .isthmus-section p,
+  .isthmus-section li {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .isthmus-section ul {
+    padding-left: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .isthmus-tldr {
+    background: var(--global-accent-tint);
+    border-left: 3px solid var(--global-theme-color);
+    border-radius: 0 12px 12px 0;
+    padding: 1rem 1.2rem 1rem 1.25rem;
+    margin: 0 0 2.4rem;
+
+    h2 {
+      font-family: $font-sans;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--global-theme-color);
+      margin: 0 0 0.4rem;
+      padding-bottom: 0;
+      border-bottom: 0;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+  }
+
+  .isthmus-figure {
+    margin: 1.25rem 0 1.5rem;
+    background: #fff;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 12px;
+    padding: 0.75rem;
+    box-shadow: var(--global-card-shadow);
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    figcaption {
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--global-text-color-light);
+      padding: 0.7rem 0.35rem 0.15rem;
+    }
+  }
+
+  // Keep paper figures on a light ground in both themes (colors are meaningful).
+  html[data-theme="dark"] & .isthmus-figure,
+  &[data-theme="dark"] .isthmus-figure {
+    background: #f4f6f8;
+    border-color: var(--global-divider-color);
+  }
+}
+
+// Dark-mode figure ground: the theme attr lives on <html>, not .project-page
+html[data-theme="dark"] .project-page .isthmus-figure {
+  background: #f4f6f8;
+}
+
+.project-page {
+  .isthmus-table-wrap {
+    overflow-x: auto;
+    margin: 1rem 0 1.4rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 12px;
+    background: var(--global-card-bg-color);
+  }
+
+  table.isthmus-table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    line-height: 1.4;
+
+    caption {
+      caption-side: bottom;
+      text-align: left;
+      font-size: 0.86rem;
+      color: var(--global-text-color-light);
+      padding: 0.7rem 0.9rem 0.85rem;
+      line-height: 1.5;
+    }
+
+    th,
+    td {
+      padding: 0.55rem 0.8rem;
+      border-bottom: 1px solid var(--global-divider-color);
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    thead th {
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      color: var(--global-text-color-light);
+      background: var(--global-accent-tint);
+      border-bottom-color: var(--global-divider-color);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    tr.isthmus-ours td {
+      background: var(--global-accent-tint);
+      font-weight: 600;
+    }
+
+    tr.isthmus-ref td {
+      color: var(--global-text-color-light);
+      font-style: italic;
+    }
+
+    td.num,
+    th.num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
+    }
+  }
+
+  .isthmus-code {
+    position: relative;
+    margin: 1rem 0 1.25rem;
+    background: var(--global-code-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 12px;
+    overflow: hidden;
+
+    pre {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      overflow-x: auto;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--global-text-color);
+    }
+
+    code {
+      font-family: $font-mono;
+      background: none;
+      padding: 0;
+    }
+  }
+
+  .isthmus-bib {
+    position: relative;
+
+    pre {
+      margin: 0;
+      padding: 1rem 1.1rem 1rem;
+      overflow-x: auto;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      background: var(--global-code-bg-color);
+      border: 1px solid var(--global-divider-color);
+      border-radius: 12px;
+      color: var(--global-text-color);
+    }
+
+    .isthmus-copy {
+      position: absolute;
+      top: 0.55rem;
+      right: 0.55rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid var(--global-divider-color);
+      background: var(--global-card-bg-color);
+      color: var(--global-text-color);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+      &:hover,
+      &:focus {
+        background: var(--global-accent-tint);
+        border-color: var(--global-theme-color);
+        color: var(--global-theme-color);
+        outline: none;
+      }
+    }
+  }
+
+  // ---------- Animation stage ----------
+  .isthmus-stage {
+    margin: 0 0 2.4rem;
+    padding: 1rem 1rem 1.1rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 16px;
+    background: var(--global-card-bg-color);
+    box-shadow: var(--global-card-shadow);
+  }
+
+  .isthmus-stage-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .isthmus-stage-title {
+    font-family: $font-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+    text-transform: none;
+  }
+
+  .isthmus-modes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .isthmus-mode {
+    appearance: none;
+    border: 1px solid var(--global-divider-color);
+    background: var(--global-bg-color);
+    color: var(--global-text-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.32rem 0.7rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      border-color: var(--global-theme-color);
+      color: var(--global-theme-color);
+    }
+
+    &.is-active {
+      background: var(--global-theme-color);
+      border-color: var(--global-theme-color);
+      color: var(--global-hover-text-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--global-theme-color);
+      outline-offset: 2px;
+    }
+  }
+
+  .isthmus-viz {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .isthmus-panel {
+    min-width: 0;
+  }
+
+  .isthmus-panel svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  .isthmus-caption {
+    margin: 0.85rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--global-text-color-light);
+    min-height: 3.2em;
+  }
+
+  .isthmus-metrics {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.82rem;
+    color: var(--global-text-color-light);
+    margin-top: 0.35rem;
+
+    strong {
+      color: var(--global-text-color);
+      font-weight: 650;
+      font-weight: 600;
+    }
+  }
+}
+
+@media (max-width: 719px) {
+  .project-page .isthmus-viz {
+    grid-template-columns: 1fr;
+  }
+}
+
+// SVG-internal colors, driven by CSS variables
+.isthmus-svg {
+  --isth-ink: var(--global-text-color);
+  --isth-muted: var(--global-text-color-light);
+  --isth-line: var(--global-divider-color);
+  --isth-accent: var(--global-theme-color);
+  --isth-tint: var(--global-accent-tint);
+  --isth-base: #c4a882;
+  --isth-base-fill: rgba(196, 168, 130, 0.28);
+  --isth-island: #c45c4a;
+  --isth-island-soft: rgba(196, 92, 74, 0.2);
+  --isth-source: rgba(80, 110, 160, 0.12);
+  --isth-paper: var(--global-bg-color);
+
+  font-family: $font-sans;
+  font-size: 11px;
+  fill: var(--isth-ink);
+
+  .axis,
+  .diagonal {
+    fill: none;
+    stroke: var(--isth-ink);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+  }
+
+  .landing {
+    fill: none;
+    stroke: var(--isth-muted);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+  }
+
+  .region-base {
+    fill: var(--isth-base-fill);
+  }
+
+  .region-source {
+    fill: var(--isth-source);
+  }
+
+  .pair-base {
+    fill: var(--isth-base);
+    stroke: none;
+  }
+
+  .pair-island {
+    fill: var(--isth-island);
+  }
+
+  .pair-isthmus {
+    fill: var(--isth-accent);
+  }
+
+  .label,
+  .tick {
+    fill: var(--isth-muted);
+    font-size: 10px;
+  }
+
+  .title-svg {
+    font-weight: 650;
+    font-weight: 600;
+    font-size: 12.5px;
+    fill: var(--isth-ink);
+  }
+
+  .flow-arrow {
+    fill: none;
+    stroke: var(--isth-muted);
+    stroke-width: 1.15;
+    marker-end: url(#isth-arrow-muted);
+  }
+
+  .flow-arrow.isthmus {
+    stroke: var(--isth-accent);
+    stroke-width: 1.6;
+    marker-end: url(#isth-arrow-accent);
+  }
+
+  .corner-mark {
+    fill: none;
+    stroke: var(--isth-island);
+    stroke-width: 1.5;
+  }
+
+  .corner-mark.bridged {
+    stroke: var(--isth-accent);
+  }
+
+  .sample-ref {
+    fill: none;
+    stroke: var(--isth-muted);
+    stroke-width: 1.2;
+  }
+
+  .sample-one {
+    fill: var(--isth-accent);
+    stroke: none;
+    opacity: 0.9;
+  }
+
+  .sample-one.island {
+    fill: var(--isth-island);
+  }
+
+  .sample-one.standard {
+    fill: var(--isth-base);
+  }
+
+  .src-dot {
+    fill: var(--isth-muted);
+    opacity: 0.55;
+  }
+
+  .jump-path {
+    fill: none;
+    stroke: var(--isth-accent);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+    opacity: 0.45;
+  }
+}
+
+html[data-theme="dark"] .isthmus-svg {
+  --isth-base: #a88b66;
+  --isth-base-fill: rgba(168, 139, 102, 0.22);
+  --isth-island: #e07a6a;
+  --isth-island-soft: rgba(224, 122, 106, 0.22);
+  --isth-source: rgba(122, 167, 255, 0.1);
+}
+
+// Scroll reveal
+.isthmus-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.isthmus-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .isthmus-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
