@@ -191,6 +191,80 @@
     margin-bottom: 1rem;
   }
 
+  .isthmus-thm {
+    margin: 1.15rem 0 1.35rem;
+    padding: 1rem 1.15rem 0.95rem 1.2rem;
+    background: var(--global-card-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-left: 3px solid var(--global-theme-color);
+    border-radius: 12px;
+    box-shadow: var(--global-card-shadow);
+  }
+
+  .isthmus-thm-label {
+    font-family: $font-sans !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em;
+    text-transform: none !important;
+    color: var(--global-theme-color);
+    margin: 0 0 0.55rem !important;
+    padding-bottom: 0;
+    border-bottom: 0;
+    line-height: 1.4;
+
+    span {
+      font-weight: 600;
+      color: var(--global-text-color);
+      letter-spacing: 0;
+    }
+  }
+
+  .isthmus-thm-body {
+    p {
+      margin: 0 0 0.55rem;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ol {
+      margin: 0.35rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-bottom: 0.35rem;
+    }
+
+    // Keep display math from overflowing on small screens
+    mjx-container,
+    .MathJax {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  }
+
+  .isthmus-thm-intuition {
+    margin: 0.85rem 0 0;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--global-divider-color);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--global-text-color-light);
+
+    strong {
+      color: var(--global-text-color);
+      font-weight: 600;
+    }
+  }
+
   .isthmus-tldr {
     background: var(--global-accent-tint);
     border-left: 3px solid var(--global-theme-color);

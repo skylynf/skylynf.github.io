@@ -304,6 +304,7 @@ filtered_bibtex_keywords:
     code,
     google_scholar_id,
     html,
+    impact_factor,
     inspirehep_id,
     osf,
     pdf,

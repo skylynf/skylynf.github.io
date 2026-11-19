@@ -16,18 +16,6 @@ extra_js:
   <p class="isthmus-kicker">Preprint · arXiv:2611.23616</p>
   <h1>Isthmus</h1>
   <p class="isthmus-subtitle">Bridging Supervision Islands Restores Uncertainty and Stability in One-Step Flows</p>
-  <p class="isthmus-authors">
-    <span class="isthmus-me">Luming Yang</span><sup>*,1</sup>,
-    Siqing Li<sup>*,1</sup>,
-    Haoxian Liu<sup>*</sup>,
-    Zhenyu Bu<sup>1</sup>,
-    Jiazheng Zhu<sup>1</sup>,
-    Alper Yilmaz<sup>†,1</sup>
-  </p>
-  <p class="isthmus-affil">
-    <sup>1</sup> The Ohio State University<br>
-    <sup>*</sup> Equal contribution &ensp; <sup>†</sup> Corresponding author
-  </p>
   <div class="isthmus-links">
     <a href="https://arxiv.org/abs/2611.23616">arXiv</a>
     <a href="https://arxiv.org/pdf/2611.23616">PDF</a>
@@ -69,24 +57,6 @@ extra_js:
     An <em>isthmus</em> spends 5% of the training pairs along the landing edge that joins this pair to the diagonal.
     The network, the loss, and inference are unchanged, and there is no added cost.
     On brain MRI, the isthmus restores one-step calibration to 0.96 and the correlation with 64-step samples to 0.93.
-  </p>
-</section>
-
-<section class="isthmus-section isthmus-reveal" id="abstract">
-  <h2>Abstract</h2>
-  <p>
-    One-step flow maps are increasingly used as posterior samplers, where the point of sampling is the uncertainty that the samples carry.
-    We find that the one-step sampler loses this uncertainty and becomes less stable.
-    Compared with multi-step samples of the same network, its samples lose variance and decorrelate.
-    Supervising the one-step jump directly makes this worse; the samples collapse further toward the conditional mean and break down when training is extended.
-    We trace both failures to the locations where training places its pairs of start and end times.
-    Only pairs on the diagonal of the time triangle receive targets from data, and the pair used for one-step sampling is either left unsupervised or supervised on an <em>island</em>, a set of pairs that the self-consistency identity does not connect to the diagonal, where the objective neither determines the one-step map nor anchors its training.
-  </p>
-  <p>
-    We bridge the island with an <em>isthmus</em>, which places 5% of the training pairs along the whole edge of the triangle that joins the one-step pair to the diagonal.
-    The error of the one-step map is then bounded by the self-consistency residual along this edge.
-    With the network, the loss and the inference code unchanged and at no added cost, the isthmus improves one-step sampling across several flow-map objectives, in MRI reconstruction, face inpainting, and unconditional generation on CIFAR-10 and ImageNet \(32\times 32\).
-    On brain MRI, it restores one-step calibration to 0.96 and the correlation with multi-step samples to 0.93; both vary far less across seeds, and the agreement holds when training is extended to three times its length.
   </p>
 </section>
 
@@ -137,6 +107,69 @@ extra_js:
       Which edge bridges the corner depends on the objective: the landing edge for identities that differentiate in the start time \(r\) (MeanFlow, iMF), and the launch edge for identities that differentiate in the end time \(t\) (LSD).
     </figcaption>
   </figure>
+</section>
+
+<section class="isthmus-section isthmus-reveal" id="theory">
+  <h2>Theoretical Insights</h2>
+  <p>
+    Time pairs live in the triangle \(0\le r\le t\le 1\).
+    Write \(X_u(z,r,t)=z+(t-r)\,u(z,r,t)\) for the jump of a velocity field \(u\), \(\Phi_{r\to t}\) for the true flow, and \(R\) for the residual of the mean-flow identity.
+    A row is a line of constant end time \(t\); the row \(t=1\) is the landing edge \(\mathcal{E}_{\mathrm{land}}\).
+    The <em>bridge</em> of a pair \((r_0,t)\) is the part of its row between the pair and the diagonal.
+    The pair is bridged when \(C_\pi(r_0,t)=\int_{r_0}^{t} dr/\pi_t(r)\) is finite, where \(\pi_t\) is the training density along that row; otherwise, pairs added on a set containing it, without bridging it, form a supervision island.
+    The statements below follow the paper; numbering matches the main text.
+  </p>
+
+  <article class="isthmus-thm" id="thm-island">
+    <h3 class="isthmus-thm-label">Theorem 1 <span>(Off the diagonal the jump is free)</span></h3>
+    <div class="isthmus-thm-body">
+      <p>
+        Fix an end time \(t\) and start times \([a,b]\) with \(b&lt;t\).
+        A \(C^1\) field \(u\) has zero residual on \([a,b]\times\{t\}\) if and only if
+      </p>
+      \[
+        X_u(\cdot,r,t)=G\circ\Phi_{r\to t}\qquad\text{for all } r\in[a,b]
+      \]
+      <p>
+        with a map \(G\) independent of \(r\), and every \(C^1\) map \(G\) is attained.
+        If instead \(b=t\) and \(u\) is bounded, then \(G=\mathrm{id}\).
+      </p>
+    </div>
+    <p class="isthmus-thm-intuition"><strong>Intuition.</strong> A row that never reaches the diagonal can have zero residual and still leave an arbitrary map \(G\)—including collapse of every sample to the mean. Only a connection to the diagonal forces \(G\) to be the identity.</p>
+  </article>
+
+  <article class="isthmus-thm" id="thm-bridge">
+    <h3 class="isthmus-thm-label">Theorem 2 <span>(Bridge criterion)</span></h3>
+    <div class="isthmus-thm-body">
+      <p>
+        Let \(r_0&lt;t\), and let \(u(\cdot,\cdot,t)\) be \(C^1\) and bounded for \(r\in[r_0,t)\).
+        For every \(z\), with \(z_r=\Phi_{r_0\to r}(z)\),
+      </p>
+      \[
+        X_u(z,r_0,t)-\Phi_{r_0\to t}(z)=\int_{r_0}^{t} R(z_r,r,t)\,dr.
+      \]
+      <p>
+        Hence \(e^2(r_0,t)=\mathbb{E}_{p_{r_0}}\|X_u(\cdot,r_0,t)-\Phi_{r_0\to t}\|^2\), the mean-square error of the jump, bounds the squared \(W_2\) distance between \(X_u(\cdot,r_0,t)_{\#}p_{r_0}\) and \(p_t\) and satisfies
+      </p>
+      \[
+        e^2(r_0,t)\le C_\pi(r_0,t)\int_{r_0}^{t}\pi_t(r)\,\mathbb{E}_{p_r}\|R(\cdot,r,t)\|^2\,dr.
+      \]
+    </div>
+    <p class="isthmus-thm-intuition"><strong>Intuition.</strong> The error of a jump is the residual accumulated along its bridge. Training controls this error once the sampler covers the whole edge from the pair to the diagonal; if a gap remains, the constant \(C_\pi\) is infinite and the bound is void.</p>
+  </article>
+
+  <article class="isthmus-thm" id="cor-corner">
+    <h3 class="isthmus-thm-label">Corollary 1 <span>(The one-step corner)</span></h3>
+    <div class="isthmus-thm-body">
+      <p>The bridge of the corner is the landing edge.</p>
+      <ol>
+        <li>Training pairs on the whole edge with \(\pi_1\ge c&gt;0\) give \(C_\pi(0,1)\le 1/c\), so the bridge bound controls the one-step error by the residual on the edge.</li>
+        <li>Pairs only on \([0,\delta]\), \(\delta&lt;1\), form a partial bridge: \(C_\pi(0,1)=\infty\), and the jumps share an arbitrary \(G\) at zero residual; \(\delta=0\) is the corner alone.</li>
+        <li>Without pairs on the edge, \(C_\pi(0,1)=\infty\) and the population objective does not depend on \(u\) on \(\mathcal{E}_{\mathrm{land}}\). Other rows constrain the corner only through the continuity of the network in \(t\).</li>
+      </ol>
+    </div>
+    <p class="isthmus-thm-intuition"><strong>Intuition.</strong> An isthmus that covers the whole landing edge is exactly the condition that makes the one-step error controllable. Supervising the corner alone, or only a partial strip, leaves the one-step map free.</p>
+  </article>
 </section>
 
 <section class="isthmus-section isthmus-reveal" id="method">
