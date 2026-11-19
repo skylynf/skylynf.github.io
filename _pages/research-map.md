@@ -1,0 +1,63 @@
+---
+layout: page
+permalink: /research-map/
+title: research map
+description: How the papers connect.
+nav: true
+nav_order: 3
+d3: true
+extra_js:
+  - /assets/js/research-map.js
+---
+
+<p class="rmap-lede">Hover a node, or pick two papers to trace a path.</p>
+
+<div
+  id="rmap-app"
+  class="rmap-app"
+  data-src="{{ '/assets/json/research_map.json' | relative_url }}"
+>
+  <div class="rmap-toolbar">
+    <form class="rmap-search" role="search" autocomplete="off">
+      <span class="rmap-search-icon" aria-hidden="true">⌕</span>
+      <label class="sr-only" for="rmap-q">Search papers, areas, and keywords</label>
+      <input id="rmap-q" type="search" placeholder="Search a paper or idea…" enterkeyhint="search">
+      <ul class="rmap-search-results" id="rmap-hits" hidden role="listbox"></ul>
+    </form>
+    <button type="button" class="rmap-btn" id="rmap-path" aria-pressed="false">Path finder</button>
+    <button type="button" class="rmap-btn" id="rmap-play" aria-pressed="false">Play timeline</button>
+    <div class="rmap-timeline">
+      <input id="rmap-year" type="range" min="2024" max="2026" value="2026" step="1" aria-label="Show papers up to year">
+      <span class="rmap-year-label" id="rmap-year-label">2026</span>
+    </div>
+    <span class="rmap-hint">Press <kbd>?</kbd> for shortcuts</span>
+  </div>
+
+  <div class="rmap-stage" id="rmap-stage">
+    <canvas class="rmap-particles" id="rmap-particles" aria-hidden="true"></canvas>
+    <svg class="rmap-svg" id="rmap-svg" role="img" aria-label="Research network of papers, keywords, and areas"></svg>
+    <div class="rmap-legend" aria-hidden="true">
+      <span><i class="rmap-swatch area"></i> Area</span>
+      <span><i class="rmap-swatch keyword"></i> Keyword</span>
+      <span><i class="rmap-swatch paper"></i> Paper</span>
+      <span><i class="rmap-swatch edge"></i> Shared work, strength ≥ 2</span>
+    </div>
+    <aside class="rmap-card" id="rmap-card" hidden></aside>
+    <div class="rmap-narrate" id="rmap-narrate" hidden></div>
+    <div class="rmap-year-counter" id="rmap-counter" aria-hidden="true"></div>
+    <div class="rmap-tooltip" id="rmap-tip" hidden></div>
+    <div class="rmap-help" id="rmap-help" hidden>
+      <h2>Shortcuts</h2>
+      <dl>
+        <dt><kbd>/</kbd></dt><dd>Focus search</dd>
+        <dt><kbd>P</kbd></dt><dd>Path finder — then click two papers</dd>
+        <dt><kbd>Space</kbd></dt><dd>Play or pause the timeline</dd>
+        <dt><kbd>Esc</kbd></dt><dd>Clear the selection, path, or card</dd>
+        <dt><kbd>R</kbd></dt><dd>Reset the camera</dd>
+        <dt><kbd>?</kbd></dt><dd>Show or hide this list</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="rmap-mobile" id="rmap-mobile" aria-label="Research map as a list"></div>
+</div>
