@@ -23,12 +23,12 @@
     {
       "id": "area-uncertainty",
       "label": "Uncertainty",
-      "description": "Quantifying, restoring, and acting on uncertainty in generative and world models."
+      "description": "Quantifying and acting on uncertainty in generative models, world models, and Bayesian phylodynamics."
     },
     {
       "id": "area-medai",
       "label": "Medical AI",
-      "description": "Clinical perception: biomedical signals, medical images, and medical video."
+      "description": "Clinical perception and medical education: signals, images, video, and how learners work with AI."
     },
     {
       "id": "area-opt",
@@ -242,10 +242,12 @@
       },
       "summary": "Phylodynamic evidence for how hosts and ecological drivers shape the global spread of H7 influenza.",
       "keywords": [
-        "kw-phylo"
+        "kw-phylo",
+        "kw-uncertainty"
       ],
       "areas": [
-        "area-bioinfo"
+        "area-bioinfo",
+        "area-uncertainty"
       ]
     },
     {
@@ -375,7 +377,7 @@
         "kw-generative"
       ],
       "areas": [
-        "area-uncertainty"
+        "area-medai"
       ]
     }
   ],
@@ -436,6 +438,10 @@
       {
         "source": "qu2026h7virus",
         "target": "kw-phylo"
+      },
+      {
+        "source": "qu2026h7virus",
+        "target": "kw-uncertainty"
       },
       {
         "source": "yang2026evaluating",
@@ -586,6 +592,10 @@
         "target": "area-bioinfo"
       },
       {
+        "source": "qu2026h7virus",
+        "target": "area-uncertainty"
+      },
+      {
         "source": "yang2026evaluating",
         "target": "area-agentic"
       },
@@ -603,7 +613,7 @@
       },
       {
         "source": "yang2026hallucination",
-        "target": "area-uncertainty"
+        "target": "area-medai"
       }
     ],
     "paper_paper": [
