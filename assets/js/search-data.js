@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
+        },{id: "nav-projects",
+          title: "projects",
+          description: "Selected project pages.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
         },{id: "nav-academic-service",
           title: "academic service",
           description: "Academic service and peer-review contributions.",
@@ -62,7 +69,12 @@ ninja.data = [{
           section: "News",},{id: "news-i-am-serving-as-a-reviewer-for-frontiers-in-digital-health",
           title: 'I am serving as a reviewer for Frontiers in Digital Health.',
           description: "",
-          section: "News",},{
+          section: "News",},{id: "projects-isthmus",
+          title: 'Isthmus',
+          description: "Bridging supervision islands restores uncertainty and stability in one-step flows.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/isthmus/";
+            },},{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
