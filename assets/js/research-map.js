@@ -39,7 +39,9 @@
   let gNodes = null;
   let width = 0;
   let height = 0;
-  let yearMax = 2026;
+  let monthMax = 0;
+  let monthIndex = 0;
+  let months = [];
   let hover = null;
   let selected = null;
   let clusterFocus = null;
@@ -62,7 +64,39 @@
     readyResolve = r;
   });
 
-  const YEARS = [2024, 2025, 2026];
+  const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  function ymOf(p) {
+    return (p.year || 0) * 12 + (p.month || 12);
+  }
+
+  function formatYM(year, month) {
+    const name = MONTH_NAMES[Math.max(1, Math.min(12, month || 12)) - 1];
+    return `${name} ${year}`;
+  }
+
+  function formatPaperDate(p) {
+    return formatYM(p.year, p.month || 12);
+  }
+
+  function buildMonths() {
+    const seen = new Map();
+    (data.papers || []).forEach((p) => {
+      const ym = ymOf(p);
+      if (!seen.has(ym)) seen.set(ym, { year: p.year, month: p.month || 12, ym, label: formatPaperDate(p) });
+    });
+    months = [...seen.values()].sort((a, b) => a.ym - b.ym);
+    monthIndex = Math.max(0, months.length - 1);
+    monthMax = months.length ? months[monthIndex].ym : 0;
+    if (yearInput) {
+      yearInput.min = "0";
+      yearInput.max = String(Math.max(0, months.length - 1));
+      yearInput.step = "1";
+      yearInput.value = String(monthIndex);
+      yearInput.setAttribute("aria-label", "Show papers up to month");
+    }
+    if (yearLabel && months.length) yearLabel.textContent = months[monthIndex].label;
+  }
 
   function cssVar(name, fallback) {
     const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -89,12 +123,14 @@
 
   function isAlive(n) {
     if (!n) return false;
-    if (n.type === "paper") return n.year <= yearMax;
+    if (n.type === "paper") return ymOf(n) <= monthMax;
     if (n.type === "keyword") {
-      return n.papers.some((p) => nodeById.get(p) && nodeById.get(p).year <= yearMax);
+      return n.papers.some((p) => nodeById.get(p) && ymOf(nodeById.get(p)) <= monthMax);
     }
     if (n.type === "area") {
-      return n.keywords.some((k) => isAlive(nodeById.get(k)));
+      const fromKw = (n.keywords || []).some((k) => isAlive(nodeById.get(k)));
+      const fromPapers = (n.papers || []).some((pid) => isAlive(nodeById.get(pid)));
+      return fromKw || fromPapers;
     }
     return true;
   }
@@ -141,7 +177,9 @@
 
     data.areas.forEach((a) => {
       const area = nodeById.get(a.id);
-      area.papers = [...new Set(area.keywords.flatMap((kid) => nodeById.get(kid).papers))];
+      const fromKw = (area.keywords || []).flatMap((kid) => (nodeById.get(kid) && nodeById.get(kid).papers) || []);
+      const fromPapers = data.papers.filter((p) => (p.areas || []).includes(a.id)).map((p) => p.id);
+      area.papers = [...new Set([...fromKw, ...fromPapers])];
     });
 
     const pushLink = (source, target, kind, strength, shared) => {
@@ -155,6 +193,7 @@
 
     data.edges.keyword_area.forEach((e) => pushLink(e.source, e.target, "ka", 1));
     data.edges.paper_keyword.forEach((e) => pushLink(e.source, e.target, "pk", 1));
+    (data.edges.paper_area || []).forEach((e) => pushLink(e.source, e.target, "pa", 1));
     data.edges.paper_paper.forEach((e) => {
       if (e.strength >= 1) pushLink(e.source, e.target, "pp", e.strength, e.shared);
     });
@@ -202,7 +241,7 @@
       // legend
       { x1: -width / 2 + 8, y1: height / 2 - 156, x2: -width / 2 + 208, y2: height / 2 - 8, id: "legend" },
       // year counter band
-      { x1: -90, y1: -height / 2 + 4, x2: 90, y2: -height / 2 + 52, id: "counter" },
+      { x1: -130, y1: -height / 2 + 4, x2: 130, y2: -height / 2 + 56, id: "counter" },
     ];
   }
 
@@ -446,19 +485,20 @@
     const hy = height / 2 - 88;
 
     const areaPos = {
-      "area-opt": { fx: -0.58, fy: -0.42 },
-      "area-medai": { fx: 0.1, fy: -0.36 },
-      "area-meded": { fx: 0.66, fy: 0.02 },
-      "area-uncertainty": { fx: 0.08, fy: 0.48 },
-      "area-compbio": { fx: -0.64, fy: 0.18 },
+      "area-opt": { fx: -0.62, fy: -0.42 },
+      "area-medai": { fx: 0.14, fy: -0.42 },
+      "area-agentic": { fx: 0.66, fy: 0.02 },
+      "area-uncertainty": { fx: 0.16, fy: 0.50 },
+      "area-bioinfo": { fx: -0.64, fy: 0.22 },
     };
+    const layoutScale = Math.min(width / 1000, height / 780, 1);
 
     const areas = nodes.filter((n) => n.type === "area");
     areas.forEach((n) => {
       const p = areaPos[n.id] || { fx: 0, fy: 0 };
       n.x = p.fx * hx;
       n.y = p.fy * hy;
-      n.r = 50;
+      n.r = Math.round(42 + 8 * Math.max(0.7, layoutScale));
       clampToStage(n, n.r);
       n.homeX = n.x;
       n.homeY = n.y;
@@ -479,7 +519,8 @@
       const out = Math.atan2(area.y, area.x);
       const n = papers.length;
       const spread = n === 1 ? 0 : Math.min(2.45, 0.9 + n * 0.42);
-      const dist = n === 1 ? 128 : n === 2 ? 138 : 154;
+      const s = Math.max(0.72, layoutScale);
+      const dist = (n === 1 ? 128 : n === 2 ? 138 : 154) * s;
       papers.forEach((p, i) => {
         const t = n === 1 ? 0 : (i / (n - 1) - 0.5) * spread;
         const ang = out + t;
@@ -1192,6 +1233,9 @@
       } else if (d.kind === "ka") {
         w = 1.15;
         op = 0.32;
+      } else if (d.kind === "pa") {
+        w = 1.05;
+        op = 0.22;
       } else {
         w = 1;
         op = 0.28;
@@ -1331,7 +1375,7 @@
     if (!tipEl || d.type === "edge") return;
     const text =
       d.type === "paper"
-        ? `<strong>${escapeHtml(d.short)}</strong> · ${d.year}${d.venue ? " · " + escapeHtml(d.venue) : d.pubtype === "preprint" ? " · Preprint" : ""}`
+        ? `<strong>${escapeHtml(d.short)}</strong> · ${formatPaperDate(d)}${d.pubtype === "preprint" ? " · Preprint" : d.venue ? " · " + escapeHtml(d.venue) : ""}`
         : d.type === "keyword"
           ? `<strong>${escapeHtml(d.label)}</strong>`
           : `<strong>${escapeHtml(d.label)}</strong><br>${escapeHtml(d.description || "")}`;
@@ -1442,6 +1486,7 @@
         if (e.kind === "pp") w = e.strength >= 3 ? 1 : e.strength >= 2 ? 1.4 : 2.2;
         else if (e.kind === "pk") w = 1.8;
         else if (e.kind === "ka") w = 2.1;
+        else if (e.kind === "pa") w = 2.0;
         const nc = cost + w;
         if (nc < (dist.get(e.id) ?? Infinity)) {
           dist.set(e.id, nc);
@@ -1529,8 +1574,8 @@
   }
 
   function venueLine(p) {
-    if (p.pubtype === "preprint") return `${p.year} · Preprint`;
-    const bits = [p.year, p.venue];
+    if (p.pubtype === "preprint") return `${formatPaperDate(p)} · Preprint`;
+    const bits = [formatPaperDate(p), p.venue];
     let extra = "";
     if (p.impact_factor) extra += `<mark title="Journal impact factor">IF ${p.impact_factor}</mark>`;
     if (p.badge) extra += ` <mark>${escapeHtml(p.badge)}</mark>`;
@@ -1601,20 +1646,23 @@
     paint(performance.now());
   }
 
-  function setYear(y, opts = {}) {
-    const next = Math.max(2024, Math.min(2026, +y));
-    const prev = yearMax;
-    yearMax = next;
-    yearInput.value = String(yearMax);
-    yearLabel.textContent = String(yearMax);
+  function setMonthIndex(i, opts = {}) {
+    if (!months.length) return;
+    i = Math.max(0, Math.min(months.length - 1, +i));
+    const next = months[i].ym;
+    const prev = monthMax;
+    monthIndex = i;
+    monthMax = next;
+    if (yearInput) yearInput.value = String(i);
+    if (yearLabel) yearLabel.textContent = months[i].label;
     if (opts.counter) {
-      counterEl.textContent = String(yearMax);
+      counterEl.textContent = months[i].label;
       counterEl.classList.add("is-on");
     } else if (!playing) {
       counterEl.classList.remove("is-on");
     }
     if (next !== prev) {
-      const newborn = nodes.filter((n) => n.type === "paper" && n.year === next && next > prev);
+      const newborn = nodes.filter((n) => n.type === "paper" && ymOf(n) === next && next > prev);
       if (!reduced && newborn.length) {
         newborn.forEach((n) => {
           n.x = n.homeX * 0.15;
@@ -1634,27 +1682,42 @@
     paint(performance.now());
   }
 
+  // Compat: treat a bare year as "through the last month of that year".
+  function setYear(y, opts = {}) {
+    if (!months.length) return;
+    let i = months.length - 1;
+    for (let k = months.length - 1; k >= 0; k--) {
+      if (months[k].year <= +y) {
+        i = k;
+        break;
+      }
+      if (k === 0) i = 0;
+    }
+    setMonthIndex(i, opts);
+  }
+
   function playTimeline() {
     if (playing) {
       stopPlay();
       return;
     }
+    if (!months.length) return;
     playing = true;
     playBtn.classList.add("is-on");
     playBtn.setAttribute("aria-pressed", "true");
     playBtn.textContent = "Pause";
     let i = 0;
-    setYear(YEARS[0], { counter: true, frame: true, frameDur: reduced ? 1 : 900 });
+    setMonthIndex(0, { counter: true, frame: true, frameDur: reduced ? 1 : 800 });
     const step = () => {
       i += 1;
-      if (i >= YEARS.length) {
+      if (i >= months.length) {
         stopPlay();
         return;
       }
-      setYear(YEARS[i], { counter: true, frame: true, frameDur: reduced ? 1 : 900 });
-      playTimer = window.setTimeout(step, reduced ? 200 : 1700);
+      setMonthIndex(i, { counter: true, frame: true, frameDur: reduced ? 1 : 800 });
+      playTimer = window.setTimeout(step, reduced ? 200 : 1250);
     };
-    playTimer = window.setTimeout(step, reduced ? 200 : 1600);
+    playTimer = window.setTimeout(step, reduced ? 200 : 1200);
   }
 
   function stopPlay() {
@@ -1734,7 +1797,10 @@
     if (!n) return;
     hideHits();
     searchInput.blur();
-    if (n.type === "paper" && n.year > yearMax) setYear(n.year);
+    if (n.type === "paper" && ymOf(n) > monthMax) {
+      const i = months.findIndex((m) => m.ym === ymOf(n));
+      if (i >= 0) setMonthIndex(i);
+    }
     if (n.type === "paper") {
       openCard(n);
       flyToNodes([n], 1.38, 800, { padRight: 360 });
@@ -1764,7 +1830,7 @@
       .map((area) => {
         const papers = data.papers
           .filter((p) => (p.areas || []).includes(area.id))
-          .sort((a, b) => a.year - b.year || a.short.localeCompare(b.short));
+          .sort((a, b) => ymOf(a) - ymOf(b) || a.short.localeCompare(b.short));
         if (!papers.length) return "";
         return `<section><h2>${escapeHtml(area.label)}</h2>${papers
           .map(
@@ -1772,7 +1838,7 @@
               <img src="${p.preview}" alt="">
               <div>
                 <h3>${escapeHtml(p.short)}</h3>
-                <p>${p.pubtype === "preprint" ? p.year + " · Preprint" : `${p.year} · ${escapeHtml(p.venue || "")}`}. ${escapeHtml(p.summary)}</p>
+                <p>${p.pubtype === "preprint" ? formatPaperDate(p) + " · Preprint" : `${formatPaperDate(p)} · ${escapeHtml(p.venue || "")}`}. ${escapeHtml(p.summary)}</p>
               </div>
             </article>`
           )
@@ -1794,7 +1860,7 @@
     playBtn.addEventListener("click", playTimeline);
     yearInput.addEventListener("input", () => {
       stopPlay();
-      setYear(+yearInput.value, { counter: true, frame: true, frameDur: reduced ? 1 : 700 });
+      setMonthIndex(+yearInput.value, { counter: true, frame: true, frameDur: reduced ? 1 : 700 });
     });
     searchForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -1824,9 +1890,14 @@
       if (!searchForm.contains(e.target)) hideHits();
     });
 
+    const homeMode = app.classList.contains("rmap-app--home");
+    const mapIsActive = () =>
+      app.contains(document.activeElement) || app.matches(":hover") || (helpEl && !helpEl.hidden);
+
     document.addEventListener("keydown", (e) => {
       const tag = (e.target && e.target.tagName) || "";
       const typing = tag === "INPUT" || tag === "TEXTAREA";
+      if (homeMode && !mapIsActive()) return;
       if (e.key === "/" && !typing) {
         e.preventDefault();
         searchInput.focus();
@@ -1888,6 +1959,7 @@
       if (stage) stage.innerHTML = "<p class='rmap-lede'>The research map could not be loaded.</p>";
       return;
     }
+    buildMonths();
     buildMobile();
     if (mobileMq.matches) {
       if (readyResolve) readyResolve();
@@ -1902,6 +1974,8 @@
     playTimeline,
     togglePathMode,
     setYear,
+    setMonthIndex,
+    months: () => months,
     goToId,
     resetCamera,
     clearSelection,

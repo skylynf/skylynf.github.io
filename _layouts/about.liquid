@@ -40,6 +40,16 @@ layout: default
 
     <div class="clearfix">{{ content }}</div>
 
+    {% if page.research_map %}
+      <div class="rmap-home-block">
+        <h2>
+          <a href="{{ '/research-map/' | relative_url }}" style="color: inherit">research map</a>
+        </h2>
+        <p class="rmap-lede">Hover a node, or pick two papers to trace a path.</p>
+        {% include research-map.liquid compact=true %}
+      </div>
+    {% endif %}
+
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>

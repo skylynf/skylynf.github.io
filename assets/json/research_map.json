@@ -6,28 +6,29 @@
       2025,
       2026
     ],
+    "timeline": "month",
     "notes": "Paper–paper edges with strength >= 2 are shown by default. Tooltips use the English shared points."
   },
   "areas": [
     {
-      "id": "area-medai",
-      "label": "Medical AI",
-      "description": "Clinical perception: biomedical signals, medical images, and medical video."
+      "id": "area-bioinfo",
+      "label": "Bioinformatics",
+      "description": "Immune recognition and the host-mediated spread of influenza."
     },
     {
-      "id": "area-meded",
-      "label": "Med Education",
-      "description": "How learners interview, verify, and trust AI in clinical training."
+      "id": "area-agentic",
+      "label": "Agentic AI",
+      "description": "Multi-agent systems that interview, scaffold, and assess in clinical training."
     },
     {
       "id": "area-uncertainty",
-      "label": "Uncertainty & GenAI",
+      "label": "Uncertainty",
       "description": "Quantifying, restoring, and acting on uncertainty in generative and world models."
     },
     {
-      "id": "area-compbio",
-      "label": "Comp Biology",
-      "description": "Immune recognition and the host-mediated spread of influenza."
+      "id": "area-medai",
+      "label": "Medical AI",
+      "description": "Clinical perception: biomedical signals, medical images, and medical video."
     },
     {
       "id": "area-opt",
@@ -59,21 +60,21 @@
     {
       "id": "kw-meded",
       "label": "Education",
-      "area": "area-meded"
+      "area": "area-agentic"
     },
     {
       "id": "kw-agents",
       "label": "Agents",
-      "area": "area-meded"
+      "area": "area-agentic"
     },
     {
       "id": "kw-verify",
       "label": "Verification",
-      "area": "area-meded"
+      "area": "area-uncertainty"
     },
     {
       "id": "kw-uncertainty",
-      "label": "Uncertainty",
+      "label": "Calibration",
       "area": "area-uncertainty"
     },
     {
@@ -94,22 +95,27 @@
     {
       "id": "kw-robust",
       "label": "Robustness",
-      "area": "area-uncertainty"
+      "area": "area-medai"
     },
     {
       "id": "kw-immuno",
       "label": "Immunology",
-      "area": "area-compbio"
+      "area": "area-bioinfo"
     },
     {
       "id": "kw-phylo",
       "label": "Phylodynamics",
-      "area": "area-compbio"
+      "area": "area-bioinfo"
     },
     {
       "id": "kw-gpu",
       "label": "GPU",
       "area": "area-opt"
+    },
+    {
+      "id": "kw-light",
+      "label": "Lightweight",
+      "area": "area-medai"
     }
   ],
   "papers": [
@@ -118,6 +124,7 @@
       "short": "TensorACO",
       "title": "Tensorized Ant Colony Optimization for GPU Acceleration",
       "year": 2024,
+      "month": 7,
       "venue": "GECCO '24",
       "pubtype": "published",
       "impact_factor": null,
@@ -130,7 +137,8 @@
       },
       "summary": "Tensorizing ant colony optimization so large TSP instances can run on a GPU.",
       "keywords": [
-        "kw-gpu"
+        "kw-gpu",
+        "kw-light"
       ],
       "areas": [
         "area-opt"
@@ -141,6 +149,7 @@
       "short": "BiteEEG",
       "title": "Bidirectional Time-Frequency Pyramid Network for Enhanced Robust EEG Classification",
       "year": 2025,
+      "month": 12,
       "venue": "BIBM '25",
       "pubtype": "published",
       "impact_factor": null,
@@ -155,7 +164,8 @@
       "keywords": [
         "kw-eeg",
         "kw-replearn",
-        "kw-robust"
+        "kw-robust",
+        "kw-light"
       ],
       "areas": [
         "area-medai"
@@ -166,6 +176,7 @@
       "short": "GaussMedAct",
       "title": "Multivariate Gaussian Representation Learning for Medical Action Evaluation",
       "year": 2026,
+      "month": 1,
       "venue": "AAAI '26",
       "pubtype": "published",
       "impact_factor": null,
@@ -180,12 +191,11 @@
       "keywords": [
         "kw-action",
         "kw-replearn",
-        "kw-uncertainty",
-        "kw-robust"
+        "kw-robust",
+        "kw-light"
       ],
       "areas": [
-        "area-medai",
-        "area-uncertainty"
+        "area-medai"
       ]
     },
     {
@@ -193,6 +203,7 @@
       "short": "TCRoss",
       "title": "Disrupting Explicit Encoding Paradigms: Property-Interactive Transformers Decode T-cell Receptor Specificity Beyond Dataset Biases",
       "year": 2025,
+      "month": 11,
       "venue": "Briefings in Bioinformatics",
       "pubtype": "published",
       "impact_factor": 7.7,
@@ -210,7 +221,7 @@
         "kw-robust"
       ],
       "areas": [
-        "area-compbio"
+        "area-bioinfo"
       ]
     },
     {
@@ -218,6 +229,7 @@
       "short": "H7",
       "title": "Disentangling the Drivers and Host-Mediated Global Spread of H7 Influenza A Virus",
       "year": 2026,
+      "month": 5,
       "venue": "Nature Communications",
       "pubtype": "published",
       "impact_factor": 18.1,
@@ -233,7 +245,7 @@
         "kw-phylo"
       ],
       "areas": [
-        "area-compbio"
+        "area-bioinfo"
       ]
     },
     {
@@ -241,6 +253,7 @@
       "short": "Agent-MedU",
       "title": "Evaluating Scaffolding-Oriented Multi-Agent Large Language Model System for Clinical Interview Training",
       "year": 2026,
+      "month": 9,
       "venue": "npj Digital Medicine",
       "pubtype": "published",
       "impact_factor": 18,
@@ -254,11 +267,10 @@
       "summary": "A scaffolding multi-agent LLM standardized patient that improves interview process quality in an RCT.",
       "keywords": [
         "kw-meded",
-        "kw-agents",
-        "kw-uncertainty"
+        "kw-agents"
       ],
       "areas": [
-        "area-meded"
+        "area-agentic"
       ]
     },
     {
@@ -266,6 +278,7 @@
       "short": "Actus",
       "title": "How Uncertain Is My Action? Self-Correcting Visual Planning with Frozen World Models",
       "year": 2026,
+      "month": 11,
       "venue": null,
       "pubtype": "preprint",
       "impact_factor": null,
@@ -280,7 +293,8 @@
       "keywords": [
         "kw-world",
         "kw-uncertainty",
-        "kw-generative"
+        "kw-generative",
+        "kw-light"
       ],
       "areas": [
         "area-uncertainty"
@@ -291,6 +305,7 @@
       "short": "Isthmus",
       "title": "Isthmus: Bridging Supervision Islands Restores Uncertainty and Stability in One-Step Flows",
       "year": 2026,
+      "month": 11,
       "venue": null,
       "pubtype": "preprint",
       "impact_factor": null,
@@ -317,6 +332,7 @@
       "short": "D2Mamba",
       "title": "Seeing the Small: Deformable Duality Mamba for Retinal Lesion Segmentation",
       "year": 2026,
+      "month": 11,
       "venue": null,
       "pubtype": "preprint",
       "impact_factor": null,
@@ -341,6 +357,7 @@
       "short": "HAL",
       "title": "The Impact of Hallucination-Aware Learning on Metacognition and the AI Verification Gap in Medical Education",
       "year": 2026,
+      "month": 6,
       "venue": null,
       "pubtype": "preprint",
       "impact_factor": null,
@@ -358,7 +375,6 @@
         "kw-generative"
       ],
       "areas": [
-        "area-meded",
         "area-uncertainty"
       ]
     }
@@ -368,6 +384,10 @@
       {
         "source": "yang2024tensorized",
         "target": "kw-gpu"
+      },
+      {
+        "source": "yang2024tensorized",
+        "target": "kw-light"
       },
       {
         "source": "hong2025biteeeg",
@@ -382,6 +402,10 @@
         "target": "kw-robust"
       },
       {
+        "source": "hong2025biteeeg",
+        "target": "kw-light"
+      },
+      {
         "source": "yang2026gaussmedact",
         "target": "kw-action"
       },
@@ -391,11 +415,11 @@
       },
       {
         "source": "yang2026gaussmedact",
-        "target": "kw-uncertainty"
+        "target": "kw-robust"
       },
       {
         "source": "yang2026gaussmedact",
-        "target": "kw-robust"
+        "target": "kw-light"
       },
       {
         "source": "yang2025disrupting",
@@ -422,10 +446,6 @@
         "target": "kw-agents"
       },
       {
-        "source": "yang2026evaluating",
-        "target": "kw-uncertainty"
-      },
-      {
         "source": "li2026actus",
         "target": "kw-world"
       },
@@ -436,6 +456,10 @@
       {
         "source": "li2026actus",
         "target": "kw-generative"
+      },
+      {
+        "source": "li2026actus",
+        "target": "kw-light"
       },
       {
         "source": "yang2026isthmus",
@@ -493,15 +517,15 @@
       },
       {
         "source": "kw-meded",
-        "target": "area-meded"
+        "target": "area-agentic"
       },
       {
         "source": "kw-agents",
-        "target": "area-meded"
+        "target": "area-agentic"
       },
       {
         "source": "kw-verify",
-        "target": "area-meded"
+        "target": "area-uncertainty"
       },
       {
         "source": "kw-uncertainty",
@@ -521,19 +545,65 @@
       },
       {
         "source": "kw-robust",
-        "target": "area-uncertainty"
+        "target": "area-medai"
       },
       {
         "source": "kw-immuno",
-        "target": "area-compbio"
+        "target": "area-bioinfo"
       },
       {
         "source": "kw-phylo",
-        "target": "area-compbio"
+        "target": "area-bioinfo"
       },
       {
         "source": "kw-gpu",
         "target": "area-opt"
+      },
+      {
+        "source": "kw-light",
+        "target": "area-medai"
+      }
+    ],
+    "paper_area": [
+      {
+        "source": "yang2024tensorized",
+        "target": "area-opt"
+      },
+      {
+        "source": "hong2025biteeeg",
+        "target": "area-medai"
+      },
+      {
+        "source": "yang2026gaussmedact",
+        "target": "area-medai"
+      },
+      {
+        "source": "yang2025disrupting",
+        "target": "area-bioinfo"
+      },
+      {
+        "source": "qu2026h7virus",
+        "target": "area-bioinfo"
+      },
+      {
+        "source": "yang2026evaluating",
+        "target": "area-agentic"
+      },
+      {
+        "source": "li2026actus",
+        "target": "area-uncertainty"
+      },
+      {
+        "source": "yang2026isthmus",
+        "target": "area-uncertainty"
+      },
+      {
+        "source": "yu2026d2mamba",
+        "target": "area-medai"
+      },
+      {
+        "source": "yang2026hallucination",
+        "target": "area-uncertainty"
       }
     ],
     "paper_paper": [

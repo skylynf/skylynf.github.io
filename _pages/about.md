@@ -16,6 +16,11 @@ profile:
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
 
+research_map: true
+d3: true
+extra_js:
+  - /assets/js/research-map.js
+
 announcements:
   enabled: true # includes a list of news items
   scrollable: false # adds a vertical scroll bar if there are more than 3 news items
