@@ -1,0 +1,148 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:03.600
+A frozen world model assumes every command is executed as sent.
+
+2
+00:00:03.800 --> 00:00:06.700
+But the actuator may be off in a way we don't know.
+
+3
+00:00:06.900 --> 00:00:12.200
+ACTUS estimates the shift with the same frozen model and replans, without retraining.
+
+4
+00:00:16.400 --> 00:00:20.900
+Visual planning uses a frozen latent world model and sampling-based MPC.
+
+5
+00:00:21.100 --> 00:00:25.400
+A miscalibrated actuator transforms every command. We call this an actuation shift.
+
+6
+00:00:25.600 --> 00:00:28.300
+The frozen model cannot tell that anything is wrong.
+
+7
+00:00:28.800 --> 00:00:32.200
+The gap between prediction and observation is the residual.
+
+8
+00:00:32.400 --> 00:00:37.200
+We ask the model what would happen if the command had passed through T(θ).
+
+9
+00:00:37.400 --> 00:00:40.700
+The hypothesis that fits best tells us how the actuator is off.
+
+10
+00:00:41.300 --> 00:00:45.700
+A shift moves the prediction along only K directions, one JVP in each direction.
+
+11
+00:00:45.800 --> 00:00:49.500
+The residual contains both the shift and the model's own error.
+
+12
+00:00:49.700 --> 00:00:54.900
+Projecting the residual onto these directions gives the shift score:
+a noisy measurement of the shift.
+
+13
+00:00:55.500 --> 00:00:59.300
+Why don't we use the prediction error? It sees a shift only at second order.
+
+14
+00:00:59.600 --> 00:01:03.800
+On 124 PushT shifts, the score detects what energy misses, as our theory predicted.
+
+15
+00:01:04.400 --> 00:01:07.900
+Pooling the score over a window gives a Rao test.
+
+16
+00:01:08.200 --> 00:01:12.700
+Its power depends on one number, λ:
+the information collected about the shift.
+
+17
+00:01:13.300 --> 00:01:21.600
+254 shifts on three benchmarks fall on one predicted curve, regardless of generator,
+size or task, so detection is known before any shift is seen.
+
+18
+00:01:22.100 --> 00:01:25.800
+Detect. The pooled score crosses the threshold two steps after the shift.
+
+19
+00:01:26.000 --> 00:01:30.100
+Estimate. Gauss–Newton runs on the same score and gives Cramér–Rao error bars.
+
+20
+00:01:30.200 --> 00:01:32.900
+Attribute. The largest coordinate is rotation.
+
+21
+00:01:33.100 --> 00:01:37.600
+Compensate. Each plan passes through T(δ̂)⁻¹ before it is executed.
+
+22
+00:01:38.200 --> 00:01:44.900
+All methods start from the same weights. ACTUS raises success
+from 0.650 to 0.862 on PushT and from 0.378 to 0.432 on Cube.
+
+23
+00:01:45.100 --> 00:01:51.800
+This matches an oracle given the true shift,
+while five test-time adaptation methods gain at most 2.3 points.
+
+24
+00:01:52.400 --> 00:01:57.100
+The remaining Cube gap comes mostly from the command box
+and the blocks before the alarm.
+
+25
+00:01:57.200 --> 00:02:00.700
+The same procedure works on DINO-WM without retuning.
+
+26
+00:02:01.300 --> 00:02:07.800
+A real SO-101 arm with two cameras.
+Each camera has its own world model, trained on nominal data and then frozen.
+
+27
+00:02:08.400 --> 00:02:13.400
+Here the base joint is off by 10°, but the encoders still read 0°,
+so the arm's own sensors miss it.
+
+28
+00:02:13.600 --> 00:02:17.200
+From the wrist camera, ACTUS estimates 10.1° and turns the joint back.
+
+29
+00:02:17.400 --> 00:02:22.000
+Reach error drops from 36–38 mm to 3.0–5.5 mm, about the arm's repeatability.
+
+30
+00:02:22.600 --> 00:02:26.300
+We sealed three random shifts before the session. Here is one reach.
+
+31
+00:02:26.500 --> 00:02:29.700
+ACTUS estimated the shift from 50 exploration episodes.
+
+32
+00:02:30.200 --> 00:02:36.300
+Final frames of two reaches, alternating.
+Without compensation the wrist view jumps, and with ACTUS it barely moves.
+
+33
+00:02:36.900 --> 00:02:41.200
+Distance from the nominal end point, over all 64 seed pairs per shift.
+
+34
+00:02:41.400 --> 00:02:46.900
+Error falls from 9.8–12.5 mm to 1.9–2.5 mm,
+92–94% of the reduction achieved with the true shift.
+

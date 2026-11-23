@@ -76,7 +76,12 @@ ninja.data = [{
           section: "News",},{id: "news-i-am-serving-as-a-reviewer-for-frontiers-in-digital-health",
           title: 'I am serving as a reviewer for Frontiers in Digital Health.',
           description: "",
-          section: "News",},{id: "projects-isthmus",
+          section: "News",},{id: "projects-actus",
+          title: 'ACTUS',
+          description: "A frozen world model that detects, estimates, and compensates actuation shift, then replans, with no retraining.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/actus/";
+            },},{id: "projects-isthmus",
           title: 'Isthmus',
           description: "Bridging supervision islands restores uncertainty and stability in one-step flows.",
           section: "Projects",handler: () => {
