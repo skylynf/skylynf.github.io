@@ -18,6 +18,9 @@ nav_order: 2
 <h2 class="bibliography">Preprints</h2>
 {% bibliography --group_by none --query @*[pubtype=preprint]* %}
 
-{% bibliography --query @*[pubtype!=preprint]* %}
+{% bibliography --query @*[pubtype!=preprint && pubtype!=other]* %}
+
+<h2 class="bibliography">Others</h2>
+{% bibliography --group_by none --query @*[pubtype=other]* %}
 
 </div>
