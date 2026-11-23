@@ -37,4 +37,4 @@ I am currently a Ph.D. student and Research Associate at The Ohio State Universi
 
 Broadly, I am interested in developing intelligent systems that connect visual understanding with real-world applications, bridging data-driven methods and domain knowledge to advance both scientific discovery and societal well-being.
 
-I believe that progress in the age of AI is a shared endeavor. No single lab, discipline, or country can meet its challenges alone, and the most meaningful advances come when engineers, clinicians, scientists, and communities work side by side. I value openness, innovation, and cooperation, and I am always happy to connect with collaborators who share the goal of making AI benefit everyone.
+**I believe that progress in the age of AI is a shared endeavor**. No single lab, discipline, or country can meet its challenges alone, and the most meaningful advances come when engineers, clinicians, scientists, and communities work side by side. I value openness, innovation, and cooperation, and I am always happy to connect with collaborators who share the goal of making AI benefit everyone.
