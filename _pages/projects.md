@@ -5,7 +5,7 @@ permalink: /projects/
 description: Selected project pages.
 nav: true
 nav_order: 4
-display_categories: [generative models]
+display_categories: [world models, generative models]
 horizontal: false
 ---
 

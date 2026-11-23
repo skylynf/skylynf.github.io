@@ -1,0 +1,76 @@
+/*******************************************************************************
+ * ACTUS project page
+ * Shares the Isthmus visual language; this file only adds the video stage.
+ ******************************************************************************/
+
+.project-page {
+  .actus-video-stage {
+    margin: 0 0 2.4rem;
+    padding: 1rem 1rem 1.1rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 16px;
+    background: var(--global-card-bg-color);
+    box-shadow: var(--global-card-shadow);
+  }
+
+  .actus-video-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .actus-video-title {
+    font-family: $font-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+    text-transform: none;
+  }
+
+  .actus-video-note {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--global-text-color-light);
+  }
+
+  .actus-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background: #0f1214;
+    vertical-align: middle;
+  }
+
+  .actus-video-stage figcaption {
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: var(--global-text-color-light);
+    padding: 0.7rem 0.35rem 0.15rem;
+    margin: 0;
+  }
+}
+
+// Keep the paper-style light ground on table/figure crops in dark mode
+// (same rule as Isthmus figures; tables are also light-background scans).
+html[data-theme="dark"] .project-page .actus-video-stage {
+  // the frame follows the theme; the video itself stays as authored
+}
+
+@media (max-width: 719px) {
+  .project-page {
+    .actus-video-stage {
+      padding: 0.75rem 0.7rem 0.85rem;
+      border-radius: 12px;
+    }
+
+    .actus-video {
+      border-radius: 6px;
+    }
+  }
+}
