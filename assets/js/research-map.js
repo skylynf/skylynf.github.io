@@ -4,8 +4,6 @@
   if (!app) return;
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const mobileMq = window.matchMedia("(max-width: 719px)");
-
   const stage = document.getElementById("rmap-stage");
   const svgEl = document.getElementById("rmap-svg");
   const canvas = document.getElementById("rmap-particles");
@@ -59,6 +57,11 @@
   let entrance = reduced ? 1 : 0;
   let entered = reduced;
   let lastTick = performance.now();
+  let draggingNode = null;
+  let laidOut = false;
+  let resetBtn = null;
+  const STORE_KEY = "skylynf-rmap-layout-v1";
+  const DRAG_THRESHOLD = 6;
   let readyResolve = null;
   const ready = new Promise((r) => {
     readyResolve = r;
@@ -485,20 +488,21 @@
     const hy = height / 2 - 88;
 
     const areaPos = {
-      "area-opt": { fx: -0.62, fy: -0.42 },
-      "area-medai": { fx: 0.14, fy: -0.42 },
-      "area-agentic": { fx: 0.66, fy: 0.02 },
-      "area-uncertainty": { fx: 0.16, fy: 0.50 },
-      "area-bioinfo": { fx: -0.64, fy: 0.22 },
+      "area-opt": { fx: -0.60, fy: -0.50 },
+      "area-medai": { fx: 0.28, fy: -0.40 },
+      "area-agentic": { fx: 0.70, fy: 0.18 },
+      "area-uncertainty": { fx: 0.04, fy: 0.56 },
+      "area-bioinfo": { fx: -0.64, fy: 0.28 },
     };
     const layoutScale = Math.min(width / 1000, height / 780, 1);
+    const compact = width < 720;
 
     const areas = nodes.filter((n) => n.type === "area");
     areas.forEach((n) => {
       const p = areaPos[n.id] || { fx: 0, fy: 0 };
       n.x = p.fx * hx;
       n.y = p.fy * hy;
-      n.r = Math.round(42 + 8 * Math.max(0.7, layoutScale));
+      n.r = Math.round((compact ? 30 : 42) + 8 * Math.max(compact ? 0.45 : 0.7, layoutScale));
       clampToStage(n, n.r);
       n.homeX = n.x;
       n.homeY = n.y;
@@ -517,16 +521,17 @@
       const area = nodeById.get(aid);
       if (!area) return;
       const out = Math.atan2(area.y, area.x);
+      papers.sort((a, b) => ymOf(a) - ymOf(b) || a.id.localeCompare(b.id));
       const n = papers.length;
-      const spread = n === 1 ? 0 : Math.min(2.45, 0.9 + n * 0.42);
+      const spread = n === 1 ? 0 : Math.min(2.85, 0.7 + n * 0.44);
       const s = Math.max(0.72, layoutScale);
-      const dist = (n === 1 ? 128 : n === 2 ? 138 : 154) * s;
+      const dist = (n <= 1 ? 124 : n === 2 ? 140 : n === 3 ? 154 : 174) * s;
       papers.forEach((p, i) => {
         const t = n === 1 ? 0 : (i / (n - 1) - 0.5) * spread;
         const ang = out + t;
         p.x = area.x + Math.cos(ang) * dist;
         p.y = area.y + Math.sin(ang) * dist;
-        p.r = 22;
+        p.r = compact ? 16 : 22;
         clampToStage(p, p.r + 16);
         p.labelX = 0;
         p.labelY = p.r + 14;
@@ -562,7 +567,7 @@
           dy = Math.sin(ang);
           d = 1;
         }
-        const min = area.r + 52;
+        const min = area.r + 58;
         if (d < min) {
           cx = area.x + (dx / d) * min;
           cy = area.y + (dy / d) * min;
@@ -742,7 +747,10 @@
       n.homeY = n.y;
       n.vx = 0;
       n.vy = 0;
+      n.userPlaced = false;
+      n.flinging = false;
     });
+    laidOut = true;
   }
 
   function overlapsReport() {
@@ -820,22 +828,186 @@
         n.y = n.homeY;
         continue;
       }
-      if (n.fx != null) continue;
+      if (n.fx != null || n.flinging) continue;
       n.vx += (n.homeX - n.x) * k;
       n.vy += (n.homeY - n.y) * k;
     }
   }
 
+  function neighborForce(alpha) {
+    const d = draggingNode;
+    if (!d || !d.wasDragged) return;
+    const neighbors = adj.get(d.id) || [];
+    for (const rec of neighbors) {
+      if (rec.kind === "pp" && rec.strength < 2) continue;
+      const n = nodeById.get(rec.id);
+      if (!n || !isAlive(n) || n.fx != null) continue;
+      const dx = d.x - n.x;
+      const dy = d.y - n.y;
+      const dist = Math.hypot(dx, dy) || 1;
+      // Gentle follow so the cluster leans with the grabbed node.
+      n.vx += dx * 0.035 * alpha;
+      n.vy += dy * 0.035 * alpha;
+      const min = (d.r || 16) + (n.type === "keyword" ? 22 : n.r || 16) + 18;
+      if (dist < min) {
+        const push = ((min - dist) / dist) * 0.55 * alpha;
+        n.vx -= dx * push;
+        n.vy -= dy * push;
+      }
+    }
+  }
+
+  function collideForce(alpha) {
+    const live = nodes.filter((n) => isAlive(n));
+    const n = live.length;
+    for (let i = 0; i < n; i++) {
+      const a = live[i];
+      const ra = a.type === "keyword" ? 16 : a.r || 20;
+      for (let j = i + 1; j < n; j++) {
+        const b = live[j];
+        const rb = b.type === "keyword" ? 16 : b.r || 20;
+        let dx = a.x - b.x;
+        let dy = a.y - b.y;
+        let dist = Math.hypot(dx, dy);
+        const min = ra + rb + 10;
+        if (dist >= min) continue;
+        if (dist < 1e-3) {
+          dx = 0.7;
+          dy = 0.3;
+          dist = 1;
+        }
+        const f = ((min - dist) / dist) * 0.35 * alpha;
+        const aFixed = a.fx != null;
+        const bFixed = b.fx != null;
+        if (!aFixed) {
+          a.vx += dx * f * (bFixed ? 2 : 1);
+          a.vy += dy * f * (bFixed ? 2 : 1);
+        }
+        if (!bFixed) {
+          b.vx -= dx * f * (aFixed ? 2 : 1);
+          b.vy -= dy * f * (aFixed ? 2 : 1);
+        }
+      }
+    }
+  }
+
+  function boundsForce() {
+    for (const n of nodes) {
+      if (n.fx != null) continue;
+      const r = n.type === "paper" ? n.r + 16 : n.type === "area" ? n.r : 20;
+      const beforeX = n.x;
+      const beforeY = n.y;
+      clampToStage(n, r);
+      if (n.x !== beforeX) n.vx *= -0.25;
+      if (n.y !== beforeY) n.vy *= -0.25;
+    }
+  }
+
+  function persistLayout() {
+    try {
+      const rec = { w: width, h: height, nodes: {} };
+      nodes.forEach((n) => {
+        if (!n.userPlaced) return;
+        rec.nodes[n.id] = { x: n.x, y: n.y };
+      });
+      if (!Object.keys(rec.nodes).length) {
+        localStorage.removeItem(STORE_KEY);
+        return;
+      }
+      localStorage.setItem(STORE_KEY, JSON.stringify(rec));
+    } catch (e) {}
+  }
+
+  function applyStoredLayout() {
+    let rec;
+    try {
+      rec = JSON.parse(localStorage.getItem(STORE_KEY) || "null");
+    } catch (e) {
+      return false;
+    }
+    if (!rec || !rec.nodes || !rec.w || !rec.h) return false;
+    const sx = width / rec.w;
+    const sy = height / rec.h;
+    let applied = 0;
+    Object.entries(rec.nodes).forEach(([id, pos]) => {
+      const n = nodeById.get(id);
+      if (!n || pos == null) return;
+      n.x = pos.x * sx;
+      n.y = pos.y * sy;
+      clampToStage(n, n.r || 16);
+      n.homeX = n.x;
+      n.homeY = n.y;
+      n.vx = 0;
+      n.vy = 0;
+      n.userPlaced = true;
+      applied += 1;
+    });
+    return applied > 0;
+  }
+
+  function settleUserHomes() {
+    let changed = false;
+    nodes.forEach((n) => {
+      if (n.flinging || n.userPlaced) {
+        n.homeX = n.x;
+        n.homeY = n.y;
+        n.flinging = false;
+        n.userPlaced = true;
+        changed = true;
+      }
+    });
+    if (changed) persistLayout();
+  }
+
+  function resetLayout() {
+    try {
+      localStorage.removeItem(STORE_KEY);
+    } catch (e) {}
+    nodes.forEach((n) => {
+      n.fx = null;
+      n.fy = null;
+      n.userPlaced = false;
+      n.flinging = false;
+      n.wasDragged = false;
+    });
+    draggingNode = null;
+    computeLayout();
+    if (sim) sim.alpha(0).velocityDecay(0.28);
+    if (svg) svg.classed("is-dragging", false);
+    paint(performance.now());
+  }
+
+  function scaleLayout(prevW, prevH) {
+    if (!prevW || !prevH) return;
+    const sx = width / prevW;
+    const sy = height / prevH;
+    if (sx === 1 && sy === 1) return;
+    nodes.forEach((n) => {
+      n.x *= sx;
+      n.y *= sy;
+      n.homeX *= sx;
+      n.homeY *= sy;
+      clampToStage(n, n.r || 16);
+      n.homeX = n.x;
+      n.homeY = n.y;
+    });
+  }
+
   function startSim() {
     const d3 = window.d3;
     computeLayout();
+    applyStoredLayout();
     sim = d3
       .forceSimulation(nodes)
       .force("home", homeForce)
+      .force("neighbors", neighborForce)
+      .force("collide", collideForce)
+      .force("bounds", boundsForce)
       .velocityDecay(0.28)
       .alphaDecay(0.05)
       .alpha(0);
     sim.on("tick", ticked);
+    sim.on("end", settleUserHomes);
   }
 
   function sizeStage() {
@@ -892,6 +1064,12 @@
     zoom = d3
       .zoom()
       .scaleExtent([0.45, 3.2])
+      .filter((event) => {
+        // One-finger touch on empty canvas should scroll the page, not pan the map.
+        if (event.type === "wheel") return true;
+        if (event.type === "touchstart") return event.touches && event.touches.length > 1;
+        return !event.ctrlKey && !event.button;
+      })
       .on("zoom", (event) => {
         transform = event.transform;
         gRoot.attr("transform", transform);
@@ -910,34 +1088,81 @@
     const drag = d3
       .drag()
       .filter((event) => !event.button)
+      .touchable(() => true)
       .on("start", (event, d) => {
-        if (reduced) return;
         d.wasDragged = false;
+        d.flinging = false;
         d._px = event.x;
         d._py = event.y;
-        if (!event.active) sim.alphaTarget(0.18).restart();
+        d._lx = event.x;
+        d._ly = event.y;
+        d._lt = performance.now();
+        draggingNode = d;
+        hideTip();
+        if (sim && !reduced) sim.alphaTarget(0.22).restart();
         d.fx = d.x;
         d.fy = d.y;
       })
       .on("drag", (event, d) => {
         const dx = event.x - d._px;
         const dy = event.y - d._py;
-        if (Math.hypot(dx, dy) > 3) d.wasDragged = true;
+        if (Math.hypot(dx, dy) > DRAG_THRESHOLD) {
+          if (!d.wasDragged) {
+            d.wasDragged = true;
+            svg.classed("is-dragging", true);
+            if (gNodes) gNodes.selectAll("g.node").classed("is-dragging", (n) => n.id === d.id);
+          }
+        }
         d.fx = event.x;
         d.fy = event.y;
-        d.vx = event.x - (d._lx ?? event.x);
-        d.vy = event.y - (d._ly ?? event.y);
+        d.x = event.x;
+        d.y = event.y;
+        clampToStage(d, (d.r || 16) + 8);
+        d.fx = d.x;
+        d.fy = d.y;
+        const now = performance.now();
+        const dt = Math.max(8, now - (d._lt || now));
+        d.vx = ((event.x - (d._lx ?? event.x)) / dt) * 16;
+        d.vy = ((event.y - (d._ly ?? event.y)) / dt) * 16;
         d._lx = event.x;
         d._ly = event.y;
+        d._lt = now;
+        if (d.wasDragged) paint(now);
       })
       .on("end", (event, d) => {
         d.fx = null;
         d.fy = null;
-        d._lx = d._ly = undefined;
-        if (!event.active) sim.alphaTarget(0);
-        if (d.wasDragged) {
-          sim.alpha(Math.min(0.35, 0.12 + Math.hypot(d.vx || 0, d.vy || 0) * 0.04)).restart();
+        d._lx = d._ly = d._lt = undefined;
+        svg.classed("is-dragging", false);
+        if (gNodes) gNodes.selectAll("g.node").classed("is-dragging", false);
+        if (draggingNode && draggingNode.id === d.id) draggingNode = null;
+        if (!event.active && sim) sim.alphaTarget(0);
+        if (!d.wasDragged) return;
+        d.userPlaced = true;
+        const speed = Math.hypot(d.vx || 0, d.vy || 0);
+        if (reduced || speed < 0.6) {
+          d.vx = 0;
+          d.vy = 0;
+          d.flinging = false;
+          clampToStage(d, (d.r || 16) + 8);
+          d.homeX = d.x;
+          d.homeY = d.y;
+          persistLayout();
+          paint(performance.now());
+          return;
         }
+        // Fling with friction; home is updated when the simulation cools.
+        d.flinging = true;
+        d.vx *= 4.5;
+        d.vy *= 4.5;
+        sim.velocityDecay(0.14);
+        sim.alpha(Math.min(0.55, 0.18 + speed * 0.06)).restart();
+        const relax = () => {
+          sim.velocityDecay(0.28);
+          settleUserHomes();
+        };
+        // If the sim ends naturally, settleUserHomes runs; also cap the fling duration.
+        setTimeout(relax, 900);
       });
 
     const nodeSel = gNodes
@@ -1115,7 +1340,9 @@
   function visualPos(d, now) {
     const u = entranceEase(entrance);
     const ph = hashHue(d.id) * Math.PI * 2;
-    const s = !reduced && d.type === "area" && isAlive(d) ? 1 + 0.012 * Math.sin(now / 1800 + ph) : 1;
+    let s = !reduced && d.type === "area" && isAlive(d) ? 1 + 0.012 * Math.sin(now / 1800 + ph) : 1;
+    if (draggingNode && draggingNode.id === d.id && draggingNode.wasDragged) s *= 1.08;
+    else if (hover && hover.id === d.id) s *= 1.045;
     return { x: d.x * u, y: d.y * u, s };
   }
 
@@ -1858,6 +2085,8 @@
   function bindUi() {
     pathBtn.addEventListener("click", togglePathMode);
     playBtn.addEventListener("click", playTimeline);
+    resetBtn = document.getElementById("rmap-reset-layout");
+    if (resetBtn) resetBtn.addEventListener("click", resetLayout);
     yearInput.addEventListener("input", () => {
       stopPlay();
       setMonthIndex(+yearInput.value, { counter: true, frame: true, frameDur: reduced ? 1 : 700 });
@@ -1929,7 +2158,10 @@
       const prevW = width;
       const prevH = height;
       sizeStage();
-      if (nodes.length && (width !== prevW || height !== prevH)) computeLayout();
+      if (nodes.length && (width !== prevW || height !== prevH)) {
+        if (laidOut) scaleLayout(prevW, prevH);
+        else computeLayout();
+      }
       paint(performance.now());
     });
     ro.observe(stage);
@@ -1961,10 +2193,6 @@
     }
     buildMonths();
     buildMobile();
-    if (mobileMq.matches) {
-      if (readyResolve) readyResolve();
-      return;
-    }
     await waitForD3();
     await setup();
   }
@@ -2002,6 +2230,43 @@
     getBoxes: boxesForCheck,
     checkOverlaps: overlapsReport,
     computeLayout,
+    resetLayout,
+    persistLayout,
+    placeNode(id, x, y) {
+      const n = nodeById.get(id);
+      if (!n) return null;
+      n.x = x;
+      n.y = y;
+      clampToStage(n, (n.r || 16) + 8);
+      n.homeX = n.x;
+      n.homeY = n.y;
+      n.vx = 0;
+      n.vy = 0;
+      n.userPlaced = true;
+      n.flinging = false;
+      persistLayout();
+      paint(performance.now());
+      return { id: n.id, x: n.x, y: n.y };
+    },
+    getPositions() {
+      return Object.fromEntries(nodes.map((n) => [n.id, { x: n.x, y: n.y, type: n.type, userPlaced: !!n.userPlaced }]));
+    },
+    settleNow() {
+      nodes.forEach((n) => {
+        if (n.flinging) {
+          n.homeX = n.x;
+          n.homeY = n.y;
+          n.flinging = false;
+        } else {
+          n.x = n.homeX;
+          n.y = n.homeY;
+        }
+        n.vx = 0;
+        n.vy = 0;
+      });
+      if (sim) sim.alpha(0);
+      paint(performance.now());
+    },
     hiddenKeywords() {
       return nodes.filter((n) => n.type === "keyword" && !n.showLabel).map((n) => n.label);
     },

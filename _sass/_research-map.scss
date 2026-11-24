@@ -239,7 +239,8 @@
 .rmap-svg {
   z-index: 1;
   cursor: grab;
-  touch-action: none;
+  /* Allow vertical page scroll; node drag sets touch-action: none on the grab. */
+  touch-action: pan-y;
 }
 
 .rmap-svg:active {
@@ -247,7 +248,14 @@
 }
 
 .rmap-svg .node {
-  cursor: pointer;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.rmap-svg .node.is-dragging,
+.rmap-svg.is-dragging .node {
+  cursor: grabbing;
 }
 
 .rmap-svg .link-hit {
@@ -607,15 +615,24 @@
   .rmap-app {
     width: 100%;
     margin-left: 0;
+    --rmap-stage-h: min(78vh, 680px);
   }
 
-  .rmap-toolbar,
-  .rmap-stage {
+  .rmap-app--home {
+    --rmap-stage-h: min(70vh, 600px);
+  }
+
+  .rmap-stage,
+  .rmap-app--home .rmap-stage {
+    min-height: 560px;
+  }
+
+  .rmap-hint {
     display: none;
   }
 
   .rmap-mobile {
-    display: block;
+    display: none;
   }
 }
 
