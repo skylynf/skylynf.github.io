@@ -184,6 +184,7 @@
 }
 
 @article{huang2026rethinking,
+  hidden={true},
   title={Rethinking Cross-Sensor Domain Adaptation for Bridge Point Cloud Semantic Segmentation},
   author={Huang, Linghui and Wang, Zipeng and Chen, Shunjie and Guan, Peng and Wang, Jiandong and Li, Siqing and Yang†, Luming},
   journal={arXiv preprint arXiv:2611.27060},
@@ -200,6 +201,7 @@
 }
 
 @article{li2026robust,
+  hidden={true},
   title={Robust Lightweight Crack Classification for Real-Time UAV Bridge Inspection},
   author={Li, Wei and Li, Haisheng and Li, Weijie and Wang, Jiandong and Ma, Kaichen and Yang†, Luming},
   journal={arXiv preprint arXiv:2604.27617},
@@ -214,4 +216,22 @@
   pubtype={other},
   annotation={† Corresponding author},
   preview={attxnet.png}
+}
+
+@article{yang2026echope,
+  title={Adapting Echocardiographic Foundation Models for Detecting Pulmonary Embolism-Related Right-Heart Strain},
+  author={Yang†, Luming and Ozkut, Yasemin and Bu, Zhenyu and Li, Siqing and Yu, Chang and Situ-LaCasse, Elaine and Acuña, Josie and Yarnish, Adrienne and Demant, Martin and Adhikari‡, Srikar R. and Yilmaz‡, Alper},
+  journal={medRxiv preprint},
+  year={2026},
+  month={November},
+  doi={10.64898/2026.11.20.26368600},
+  url={https://www.medrxiv.org/content/10.64898/2026.11.20.26368600v1},
+  html={https://www.medrxiv.org/content/10.64898/2026.11.20.26368600v1},
+  pdf={https://www.medrxiv.org/content/10.64898/2026.11.20.26368600v1.full.pdf},
+  abstract={Pulmonary embolism (PE) is a time-sensitive medical emergency in which rapid recognition of right ventricular (RV) dysfunction by point-of-care ultrasound (POCUS) can support early risk stratification. Here, we present HOPE (ecHO-Pulmonary Embolism), a real-world emergency cardiac POCUS video dataset comprising 4,069 patients with suspected PE, and EchoPE, a foundation-model-based video classification framework for detecting PE-associated right-heart phenotypes. HOPE includes five commonly acquired emergency echocardiographic views, with all positive PE cases confirmed by computed tomography pulmonary angiography. EchoPE builds on EchoPrime-pretrained echocardiographic representations and incorporates view recognition, task-specific adaptation, and attention-based interpretability. Experiments suggested that directly transferring EchoPrime representations to this disease-specific task provided limited performance, whereas EchoPE (AUROC 95.2 ± 0.3) substantially outperformed both EchoPrime with a classification head (AUROC 87.6 ± 1) and conventional video deep learning baselines. At a fixed sensitivity of 90%, EchoPE achieved a precision of 87.8, compared with 70.7 for EchoPrime. Among adaptation strategies, Low-Rank Adaptation combined with knowledge distillation provided the best balance between PE discrimination and preservation of pretrained echocardiographic semantics. Interpretability analyses showed that the adapted model focused on clinically relevant RV morphological changes, interventricular septal configuration, and informative temporal segments within ultrasound videos. Overall, HOPE and EchoPE demonstrate that echocardiographic foundation models require dataset-specific adaptation to identify PE-related right-heart strain and support the potential use of artificial intelligence-assisted bedside echocardiography for risk warning in acute care settings.},
+  bibtex_show={true},
+  abbr={medRxiv},
+  pubtype={preprint},
+  annotation={† Corresponding author<br>‡ Senior author},
+  preview={echope.png}
 }

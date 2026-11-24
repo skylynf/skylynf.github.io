@@ -20,7 +20,11 @@ nav_order: 2
 
 {% bibliography --query @*[pubtype!=preprint && pubtype!=other]* %}
 
+{% comment %}
+Others is empty while both IEEE Access papers (huang2026rethinking, li2026robust)
+are hidden={true}. Restore this block to show the group again.
 <h2 class="bibliography">Others</h2>
 {% bibliography --group_by none --query @*[pubtype=other]* %}
+{% endcomment %}
 
 </div>

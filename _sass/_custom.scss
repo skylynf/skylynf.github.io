@@ -668,3 +668,8 @@ progress::-moz-progress-bar {
 #back-to-top {
   border-radius: 50%;
 }
+
+// Hidden bib entries leave an empty <li> because jekyll-scholar wraps the template.
+.publications li:not(:has(*)) {
+  display: none;
+}

@@ -379,6 +379,31 @@
       "areas": [
         "area-medai"
       ]
+    },
+    {
+      "id": "yang2026echope",
+      "short": "EchoPE",
+      "title": "Adapting Echocardiographic Foundation Models for Detecting Pulmonary Embolism-Related Right-Heart Strain",
+      "year": 2026,
+      "month": 11,
+      "venue": null,
+      "pubtype": "preprint",
+      "impact_factor": null,
+      "badge": null,
+      "preview": "/assets/img/publication_preview/echope.png",
+      "links": {
+        "paper": "https://www.medrxiv.org/content/10.64898/2026.11.20.26368600v1",
+        "code": null,
+        "project": null
+      },
+      "summary": "Adapting an echocardiographic foundation model to detect PE-related right-heart strain in emergency POCUS video.",
+      "keywords": [
+        "kw-imaging",
+        "kw-replearn"
+      ],
+      "areas": [
+        "area-medai"
+      ]
     }
   ],
   "edges": {
@@ -502,6 +527,14 @@
       {
         "source": "yang2026hallucination",
         "target": "kw-generative"
+      },
+      {
+        "source": "yang2026echope",
+        "target": "kw-imaging"
+      },
+      {
+        "source": "yang2026echope",
+        "target": "kw-replearn"
       }
     ],
     "keyword_area": [
@@ -613,6 +646,10 @@
       },
       {
         "source": "yang2026hallucination",
+        "target": "area-medai"
+      },
+      {
+        "source": "yang2026echope",
         "target": "area-medai"
       }
     ],
@@ -999,6 +1036,93 @@
         "strength": 1,
         "shared": [
           "A shared medical-application setting only: retinal lesion segmentation versus AI verification in medical education."
+        ]
+      },
+      {
+        "source": "yang2024tensorized",
+        "target": "yang2026echope",
+        "strength": 0,
+        "shared": [
+          "Essentially nothing in common: GPU ant-colony optimization for TSP versus echocardiographic video classification for pulmonary embolism."
+        ]
+      },
+      {
+        "source": "hong2025biteeeg",
+        "target": "yang2026echope",
+        "strength": 2,
+        "shared": [
+          "Both are medical-AI perception systems: specialized architectures for clinical signals or images (time–frequency EEG dynamics versus echocardiographic ultrasound video).",
+          "Both start from representation learning and adapt it to a clinically meaningful recognition task, rather than treating the backbone as a frozen off-the-shelf classifier.",
+          "The modalities and clinical settings differ (BCI EEG versus emergency POCUS)."
+        ]
+      },
+      {
+        "source": "yang2026gaussmedact",
+        "target": "yang2026echope",
+        "strength": 2,
+        "shared": [
+          "Both are medical-video systems: scoring fine-grained clinical motion versus classifying PE-related right-heart phenotypes in emergency echocardiograms.",
+          "Both rely on learned visual representations of clinical video rather than single-frame stills, and both are aimed at bedside or procedural assessment.",
+          "The tasks differ (action quality versus disease-related strain detection), and EchoPE is specifically about adapting a foundation model."
+        ]
+      },
+      {
+        "source": "yang2025disrupting",
+        "target": "yang2026echope",
+        "strength": 1,
+        "shared": [
+          "Both are biomedical machine-learning systems with a representation-learning component, but the modality and task differ sharply (TCR–peptide binding versus emergency echocardiography)."
+        ]
+      },
+      {
+        "source": "qu2026h7virus",
+        "target": "yang2026echope",
+        "strength": 1,
+        "shared": [
+          "A shared biomedical-application setting only: influenza phylogeography versus bedside ultrasound classification of pulmonary embolism."
+        ]
+      },
+      {
+        "source": "yang2026evaluating",
+        "target": "yang2026echope",
+        "strength": 1,
+        "shared": [
+          "A shared medical-application setting only: clinical interview training versus emergency echocardiographic detection of PE-related right-heart strain."
+        ]
+      },
+      {
+        "source": "li2026actus",
+        "target": "yang2026echope",
+        "strength": 1,
+        "shared": [
+          "Both are visual models, but one is robotic visual planning under action uncertainty and the other is clinical ultrasound video classification. Beyond that the overlap is limited."
+        ]
+      },
+      {
+        "source": "yang2026isthmus",
+        "target": "yang2026echope",
+        "strength": 2,
+        "shared": [
+          "Both are medical-imaging papers: one-step posterior sampling for brain MRI reconstruction, and video classification of emergency echocardiograms.",
+          "The methods and questions differ (generative calibration of one-step samples versus foundation-model adaptation for PE-related right-heart strain)."
+        ]
+      },
+      {
+        "source": "yu2026d2mamba",
+        "target": "yang2026echope",
+        "strength": 2,
+        "shared": [
+          "Both are medical-imaging systems for clinical perception: retinal lesion segmentation versus echocardiographic detection of PE-related right-heart strain.",
+          "Both operate on real clinical images or video and aim to surface findings that support diagnosis, rather than a generic vision benchmark.",
+          "The methods differ (deformable state-space scanning versus foundation-model adaptation with view recognition)."
+        ]
+      },
+      {
+        "source": "yang2026hallucination",
+        "target": "yang2026echope",
+        "strength": 1,
+        "shared": [
+          "A shared medical-application setting only: teaching students to verify generative AI versus detecting PE-related right-heart strain in emergency ultrasound."
         ]
       }
     ]

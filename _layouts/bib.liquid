@@ -1,5 +1,6 @@
 ---
 ---
+{% unless entry.hidden == true or entry.hidden == 'true' %}
 <div class="row">
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
@@ -390,3 +391,4 @@
     {% endif %}
   </div>
 </div>
+{% endunless %}
