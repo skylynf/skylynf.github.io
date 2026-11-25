@@ -30,7 +30,7 @@ back_to_top: true # set to false to disable the back to top button
 #   true  = every Jekyll-rendered page shows the maintenance message
 #   false = site is back online (this is the only change needed to revert)
 # Static trees Pathophysiology/ and tax/ are not affected by this flag.
-maintenance: false
+maintenance: true
 
 # -----------------------------------------------------------------------------
 # Theme
